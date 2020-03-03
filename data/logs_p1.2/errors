@@ -1,0 +1,13 @@
+Jan  1 0:0:0 mylinux kernel: no error	KERNEL supported cpus:
+Gen 26 14:19:40 mylinux kernel: no error	KERNEL supported cpus:
+Ene 26 14:19:40 mylinux kernel: no error	KERNEL supported cpus:
+Jan 31 14:19:40 mylinux kernel: no error	KERNEL supported cpus:
+Jan 31 25:19:40 mylinux kernel: error1 KERNEL supported cpus:
+Jan 31 14:69:40 mylinux kernel: error2 KERNEL supported cpus:
+Jan 31 25:19:69 mylinux kernel: error3 KERNEL supported cpus:
+Jan 31 25:19:40 mylinux kernel  error4 KERNEL supported cpus:
+Jan 32 14:19:40 mylinux kernel: error5 KERNEL supported cpus:
+Feb 31 25:19:40 mylinux kernel: error6 KERNEL supported cpus:
+Jan 26 11:38:25 mylinux gnome-session[2833]: Took 905 bytes to encode OCTET STRING: [0Ç#003Å0Åâ#002ÅÅ]:901 (OCTET_STRING.c:516)
+Abr  2 20:09:44 mylinux kernel: Linux version 4.15.11-1-ARCH (builduser@heftig-30956) (gcc version 7.3.1 20180312 (GCC)) #1 SMP PREEMPT Mon Mar 29 18:21:03 UTC 2018
+Apr  2 20:09:44 mylinux kernel: Linux version 4.15.11-1-ARCH (builduser@heftig-30956) (gcc version 7.3.1 20180312 (GCC)) #1 SMP PREEMPT Mon Mar 29 18:21:03 UTC 2018

@@ -1,0 +1,9 @@
+Dades de prova proporcionades:
+
+syslog.1: conté 4 linies amb dades binaries.
+errors: per a provar la resistència a alguns errors i casos difícils en la entrada.
+remote: hi ha missatges de diverses màquines.
+messages.gz: és força gran i està comprimit: s'ha de tractar així.
+buit: sense res
+
+Altres proves les podeu fer amb els fitxers a /var/log.

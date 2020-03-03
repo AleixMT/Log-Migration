@@ -1,0 +1,519 @@
+Jan 26 14:19:40 spoces2 kernel: Linux version 4.15.15-1-ARCH (builduser@heftig-4572) (gcc version 7.3.1 20180312 (GCC)) #1 SMP PREEMPT Sat Mar 31 23:59:25 UTC 2018
+Jan 26 14:19:40 spoces2 kernel: Command line: BOOT_IMAGE=/boot/vmlinuz-linux root=UUID=07c6b457-3f39-4ddf-bfd8-c169e8a877b2 rw quiet
+Jan 26 14:19:40 spoces2 kernel: KERNEL supported cpus:
+Jan 26 14:19:40 spoces2 kernel:   Intel GenuineIntel
+Jan 26 14:19:40 spoces2 kernel:   AMD AuthenticAMD
+Jan 26 14:19:40 spoces2 kernel:   Centaur CentaurHauls
+Jan 26 14:19:40 spoces2 kernel: x86/fpu: x87 FPU will use FXSAVE
+Jan 26 14:19:40 spoces2 kernel: e820: BIOS-provided physical RAM map:
+Jan 26 14:19:40 spoces2 kernel: BIOS-e820: [mem 0x0000000000000000-0x000000000009fbff] usable
+Jan 26 14:19:40 spoces2 kernel: BIOS-e820: [mem 0x000000000009fc00-0x000000000009ffff] reserved
+Jan 26 14:19:40 spoces2 kernel: BIOS-e820: [mem 0x00000000000f0000-0x00000000000fffff] reserved
+Jan 26 14:19:40 spoces2 kernel: BIOS-e820: [mem 0x0000000000100000-0x000000003ffeffff] usable
+Jan 26 14:19:40 spoces2 kernel: BIOS-e820: [mem 0x000000003fff0000-0x000000003fffffff] ACPI data
+Jan 26 14:19:40 spoces2 kernel: BIOS-e820: [mem 0x00000000fec00000-0x00000000fec00fff] reserved
+Jan 26 14:19:40 spoces2 kernel: BIOS-e820: [mem 0x00000000fee00000-0x00000000fee00fff] reserved
+Jan 26 14:19:40 spoces2 kernel: BIOS-e820: [mem 0x00000000fffc0000-0x00000000ffffffff] reserved
+Jan 26 14:19:40 spoces2 kernel: NX (Execute Disable) protection: active
+Jan 26 14:19:40 spoces2 kernel: random: fast init done
+Jan 26 14:19:40 spoces2 kernel: SMBIOS 2.5 present.
+Jan 26 14:19:40 spoces2 kernel: DMI: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
+Jan 26 14:19:40 spoces2 kernel: Hypervisor detected: KVM
+Jan 26 14:19:40 spoces2 kernel: e820: update [mem 0x00000000-0x00000fff] usable ==> reserved
+Jan 26 14:19:40 spoces2 kernel: e820: remove [mem 0x000a0000-0x000fffff] usable
+Jan 26 14:19:40 spoces2 kernel: e820: last_pfn = 0x3fff0 max_arch_pfn = 0x400000000
+Jan 26 14:19:40 spoces2 kernel: MTRR default type: uncachable
+Jan 26 14:19:40 spoces2 kernel: MTRR variable ranges disabled:
+Jan 26 14:19:40 spoces2 kernel: MTRR: Disabled
+Jan 26 14:19:40 spoces2 kernel: x86/PAT: MTRRs disabled, skipping PAT initialization too.
+Jan 26 14:19:40 spoces2 kernel: CPU MTRRs all blank - virtualized system.
+Jan 26 14:19:40 spoces2 kernel: x86/PAT: Configuration [0-7]: WB  WT  UC- UC  WB  WT  UC- UC  
+Jan 26 14:19:40 spoces2 kernel: found SMP MP-table at [mem 0x0009fff0-0x0009ffff] mapped at [        (ptrval)]
+Jan 26 14:19:40 spoces2 kernel: Scanning 1 areas for low memory corruption
+Jan 26 14:19:40 spoces2 kernel: Base memory trampoline at [        (ptrval)] 99000 size 24576
+Jan 26 14:19:40 spoces2 kernel: BRK [0x3663a000, 0x3663afff] PGTABLE
+Jan 26 14:19:40 spoces2 kernel: BRK [0x3663b000, 0x3663bfff] PGTABLE
+Jan 26 14:19:40 spoces2 kernel: BRK [0x3663c000, 0x3663cfff] PGTABLE
+Jan 26 14:19:40 spoces2 kernel: BRK [0x3663d000, 0x3663dfff] PGTABLE
+Jan 26 14:19:40 spoces2 kernel: BRK [0x3663e000, 0x3663efff] PGTABLE
+Jan 26 14:19:40 spoces2 kernel: RAMDISK: [mem 0x37231000-0x3790ffff]
+Jan 26 14:19:40 spoces2 kernel: ACPI: Early table checksum verification disabled
+Jan 26 14:19:40 spoces2 kernel: ACPI: RSDP 0x00000000000E0000 000024 (v02 VBOX  )
+Jan 26 14:19:40 spoces2 kernel: ACPI: XSDT 0x000000003FFF0030 00003C (v01 VBOX   VBOXXSDT 00000001 ASL  00000061)
+Jan 26 14:19:40 spoces2 kernel: ACPI: FACP 0x000000003FFF00F0 0000F4 (v04 VBOX   VBOXFACP 00000001 ASL  00000061)
+Jan 26 14:19:40 spoces2 kernel: ACPI: DSDT 0x000000003FFF0470 0021FF (v02 VBOX   VBOXBIOS 00000002 INTL 20160108)
+Jan 26 14:19:40 spoces2 kernel: ACPI: FACS 0x000000003FFF0200 000040
+Jan 26 14:19:40 spoces2 kernel: ACPI: FACS 0x000000003FFF0200 000040
+Jan 26 14:19:40 spoces2 kernel: ACPI: APIC 0x000000003FFF0240 000054 (v02 VBOX   VBOXAPIC 00000001 ASL  00000061)
+Jan 26 14:19:40 spoces2 kernel: ACPI: SSDT 0x000000003FFF02A0 0001CC (v01 VBOX   VBOXCPUT 00000002 INTL 20160108)
+Jan 26 14:19:40 spoces2 kernel: ACPI: Local APIC address 0xfee00000
+Jan 26 14:19:40 spoces2 kernel: No NUMA configuration found
+Jan 26 14:19:40 spoces2 kernel: Faking a node at [mem 0x0000000000000000-0x000000003ffeffff]
+Jan 26 14:19:40 spoces2 kernel: NODE_DATA(0) allocated [mem 0x3ffed000-0x3ffeffff]
+Jan 26 14:19:40 spoces2 kernel: kvm-clock: cpu 0, msr 0:3ffe7001, primary cpu clock
+Jan 26 14:19:40 spoces2 kernel: kvm-clock: Using msrs 4b564d01 and 4b564d00
+Jan 26 14:19:40 spoces2 kernel: kvm-clock: using sched offset of 6679870310 cycles
+Jan 26 14:19:40 spoces2 kernel: clocksource: kvm-clock: mask: 0xffffffffffffffff max_cycles: 0x1cd42e4dffb, max_idle_ns: 881590591483 ns
+Jan 26 14:19:40 spoces2 kernel: Zone ranges:
+Jan 26 14:19:40 spoces2 kernel:   DMA      [mem 0x0000000000001000-0x0000000000ffffff]
+Jan 26 14:19:40 spoces2 kernel:   DMA32    [mem 0x0000000001000000-0x000000003ffeffff]
+Jan 26 14:19:40 spoces2 kernel:   Normal   empty
+Jan 26 14:19:40 spoces2 kernel:   Device   empty
+Jan 26 14:19:40 spoces2 kernel: Movable zone start for each node
+Jan 26 14:19:40 spoces2 kernel: Early memory node ranges
+Jan 26 14:19:40 spoces2 kernel:   node   0: [mem 0x0000000000001000-0x000000000009efff]
+Jan 26 14:19:40 spoces2 kernel:   node   0: [mem 0x0000000000100000-0x000000003ffeffff]
+Jan 26 14:19:40 spoces2 kernel: Initmem setup node 0 [mem 0x0000000000001000-0x000000003ffeffff]
+Jan 26 14:19:40 spoces2 kernel: On node 0 totalpages: 262030
+Jan 26 14:19:40 spoces2 kernel:   DMA zone: 64 pages used for memmap
+Jan 26 14:19:40 spoces2 kernel:   DMA zone: 21 pages reserved
+Jan 26 14:19:40 spoces2 kernel:   DMA zone: 3998 pages, LIFO batch:0
+Jan 26 14:19:40 spoces2 kernel:   DMA32 zone: 4032 pages used for memmap
+Jan 26 14:19:40 spoces2 kernel:   DMA32 zone: 258032 pages, LIFO batch:31
+Jan 26 14:19:40 spoces2 kernel: Reserved but unavailable: 98 pages
+Jan 26 14:19:40 spoces2 kernel: ACPI: PM-Timer IO Port: 0x4008
+Jan 26 14:19:40 spoces2 kernel: ACPI: Local APIC address 0xfee00000
+Jan 26 14:19:40 spoces2 kernel: IOAPIC[0]: apic_id 1, version 32, address 0xfec00000, GSI 0-23
+Jan 26 14:19:40 spoces2 kernel: ACPI: INT_SRC_OVR (bus 0 bus_irq 0 global_irq 2 dfl dfl)
+Jan 26 14:19:40 spoces2 kernel: ACPI: INT_SRC_OVR (bus 0 bus_irq 9 global_irq 9 high level)
+Jan 26 14:19:40 spoces2 kernel: ACPI: IRQ0 used by override.
+Jan 26 14:19:40 spoces2 kernel: ACPI: IRQ9 used by override.
+Jan 26 14:19:40 spoces2 kernel: Using ACPI (MADT) for SMP configuration information
+Jan 26 14:19:40 spoces2 kernel: smpboot: Allowing 1 CPUs, 0 hotplug CPUs
+Jan 26 14:19:40 spoces2 kernel: PM: Registered nosave memory: [mem 0x00000000-0x00000fff]
+Jan 26 14:19:40 spoces2 kernel: PM: Registered nosave memory: [mem 0x0009f000-0x0009ffff]
+Jan 26 14:19:40 spoces2 kernel: PM: Registered nosave memory: [mem 0x000a0000-0x000effff]
+Jan 26 14:19:40 spoces2 kernel: PM: Registered nosave memory: [mem 0x000f0000-0x000fffff]
+Jan 26 14:19:40 spoces2 kernel: e820: [mem 0x40000000-0xfebfffff] available for PCI devices
+Jan 26 14:19:40 spoces2 kernel: Booting paravirtualized kernel on KVM
+Jan 26 14:19:40 spoces2 kernel: clocksource: refined-jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 1910969940391419 ns
+Jan 26 14:19:40 spoces2 kernel: setup_percpu: NR_CPUS:320 nr_cpumask_bits:320 nr_cpu_ids:1 nr_node_ids:1
+Jan 26 14:19:40 spoces2 kernel: percpu: Embedded 45 pages/cpu @        (ptrval) s147456 r8192 d28672 u2097152
+Jan 26 14:19:40 spoces2 kernel: pcpu-alloc: s147456 r8192 d28672 u2097152 alloc=1*2097152
+Jan 26 14:19:40 spoces2 kernel: pcpu-alloc: [0] 0 
+Jan 26 14:19:40 spoces2 kernel: PV qspinlock hash table entries: 256 (order: 0, 4096 bytes)
+Jan 26 14:19:40 spoces2 kernel: Built 1 zonelists, mobility grouping on.  Total pages: 257913
+Jan 26 14:19:40 spoces2 kernel: Policy zone: DMA32
+Jan 26 14:19:40 spoces2 kernel: Kernel command line: BOOT_IMAGE=/boot/vmlinuz-linux root=UUID=07c6b457-3f39-4ddf-bfd8-c169e8a877b2 rw quiet
+Jan 26 14:19:40 spoces2 kernel: Calgary: detecting Calgary via BIOS EBDA area
+Jan 26 14:19:40 spoces2 kernel: Calgary: Unable to locate Rio Grande table in EBDA - bailing!
+Jan 26 14:19:40 spoces2 kernel: Memory: 1001536K/1048120K available (10252K kernel code, 1250K rwdata, 3224K rodata, 1432K init, 632K bss, 46584K reserved, 0K cma-reserved)
+Jan 26 14:19:40 spoces2 kernel: SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+Jan 26 14:19:40 spoces2 kernel: Kernel/User page tables isolation: enabled
+Jan 26 14:19:40 spoces2 kernel: ftrace: allocating 31427 entries in 123 pages
+Jan 26 14:19:40 spoces2 kernel: Preemptible hierarchical RCU implementation.
+Jan 26 14:19:40 spoces2 kernel: 	CONFIG_RCU_FANOUT set to non-default value of 32
+Jan 26 14:19:40 spoces2 kernel: 	RCU dyntick-idle grace-period acceleration is enabled.
+Jan 26 14:19:40 spoces2 kernel: 	RCU restricting CPUs from NR_CPUS=320 to nr_cpu_ids=1.
+Jan 26 14:19:40 spoces2 kernel: 	RCU priority boosting: priority 1 delay 500 ms.
+Jan 26 14:19:40 spoces2 kernel: 	Tasks RCU enabled.
+Jan 26 14:19:40 spoces2 kernel: RCU: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+Jan 26 14:19:40 spoces2 kernel: NR_IRQS: 20736, nr_irqs: 256, preallocated irqs: 16
+Jan 26 14:19:40 spoces2 kernel: 	Offload RCU callbacks from CPUs: .
+Jan 26 14:19:40 spoces2 kernel: Console: colour dummy device 80x25
+Jan 26 14:19:40 spoces2 kernel: console [tty0] enabled
+Jan 26 14:19:40 spoces2 kernel: ACPI: Core revision 20170831
+Jan 26 14:19:40 spoces2 kernel: ACPI: 2 ACPI AML tables successfully acquired and loaded
+Jan 26 14:19:40 spoces2 kernel: APIC: Switch to symmetric I/O mode setup
+Jan 26 14:19:40 spoces2 kernel: x2apic enabled
+Jan 26 14:19:40 spoces2 kernel: Switched APIC routing to physical x2apic.
+Jan 26 14:19:40 spoces2 kernel: ..TIMER: vector=0x30 apic1=0 pin1=2 apic2=-1 pin2=-1
+Jan 26 14:19:40 spoces2 kernel: tsc: Detected 2666.634 MHz processor
+Jan 26 14:19:40 spoces2 kernel: Calibrating delay loop (skipped) preset value.. 5333.26 BogoMIPS (lpj=2666634)
+Jan 26 14:19:40 spoces2 kernel: pid_max: default: 32768 minimum: 301
+Jan 26 14:19:40 spoces2 kernel: Security Framework initialized
+Jan 26 14:19:40 spoces2 kernel: Yama: becoming mindful.
+Jan 26 14:19:40 spoces2 kernel: Dentry cache hash table entries: 131072 (order: 8, 1048576 bytes)
+Jan 26 14:19:40 spoces2 kernel: Inode-cache hash table entries: 65536 (order: 7, 524288 bytes)
+Jan 26 14:19:40 spoces2 kernel: Mount-cache hash table entries: 2048 (order: 2, 16384 bytes)
+Jan 26 14:19:40 spoces2 kernel: Mountpoint-cache hash table entries: 2048 (order: 2, 16384 bytes)
+Jan 26 14:19:40 spoces2 kernel: mce: CPU supports 0 MCE banks
+Jan 26 14:19:40 spoces2 kernel: process: using mwait in idle threads
+Jan 26 14:19:40 spoces2 kernel: Last level iTLB entries: 4KB 128, 2MB 4, 4MB 4
+Jan 26 14:19:40 spoces2 kernel: Last level dTLB entries: 4KB 256, 2MB 0, 4MB 32, 1GB 0
+Jan 26 14:19:40 spoces2 kernel: Spectre V2 : Mitigation: Full generic retpoline
+Jan 26 14:19:40 spoces2 kernel: Freeing SMP alternatives memory: 24K
+Jan 26 14:19:40 spoces2 kernel: APIC calibration not consistent with PM-Timer: 197ms instead of 100ms
+Jan 26 14:19:40 spoces2 kernel: APIC delta adjusted to PM-Timer: 6249954 (12373009)
+Jan 26 14:19:40 spoces2 kernel: smpboot: CPU0: Intel(R) Core(TM)2 Quad CPU    Q6700  @ 2.66GHz (family: 0x6, model: 0xf, stepping: 0xb)
+Jan 26 14:19:40 spoces2 kernel: Performance Events: unsupported p6 CPU model 15 no PMU driver, software events only.
+Jan 26 14:19:40 spoces2 kernel: Hierarchical SRCU implementation.
+Jan 26 14:19:40 spoces2 kernel: NMI watchdog: Perf event create on CPU 0 failed with -2
+Jan 26 14:19:40 spoces2 kernel: NMI watchdog: Perf NMI watchdog permanently disabled
+Jan 26 14:19:40 spoces2 kernel: smp: Bringing up secondary CPUs ...
+Jan 26 14:19:40 spoces2 kernel: smp: Brought up 1 node, 1 CPU
+Jan 26 14:19:40 spoces2 kernel: smpboot: Max logical packages: 1
+Jan 26 14:19:40 spoces2 kernel: smpboot: Total of 1 processors activated (5333.26 BogoMIPS)
+Jan 26 14:19:40 spoces2 kernel: devtmpfs: initialized
+Jan 26 14:19:40 spoces2 kernel: x86/mm: Memory block size: 128MB
+Jan 26 14:19:40 spoces2 kernel: clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 1911260446275000 ns
+Jan 26 14:19:40 spoces2 kernel: futex hash table entries: 256 (order: 2, 16384 bytes)
+Jan 26 14:19:40 spoces2 kernel: pinctrl core: initialized pinctrl subsystem
+Jan 26 14:19:40 spoces2 kernel: RTC time: 19:19:27, date: 01/26/20
+Jan 26 14:19:40 spoces2 kernel: NET: Registered protocol family 16
+Jan 26 14:19:40 spoces2 kernel: cpuidle: using governor ladder
+Jan 26 14:19:40 spoces2 kernel: cpuidle: using governor menu
+Jan 26 14:19:40 spoces2 kernel: ACPI: bus type PCI registered
+Jan 26 14:19:40 spoces2 kernel: acpiphp: ACPI Hot Plug PCI Controller Driver version: 0.5
+Jan 26 14:19:40 spoces2 kernel: PCI: Using configuration type 1 for base access
+Jan 26 14:19:40 spoces2 kernel: HugeTLB registered 2.00 MiB page size, pre-allocated 0 pages
+Jan 26 14:19:40 spoces2 kernel: ACPI: Added _OSI(Module Device)
+Jan 26 14:19:40 spoces2 kernel: ACPI: Added _OSI(Processor Device)
+Jan 26 14:19:40 spoces2 kernel: ACPI: Added _OSI(3.0 _SCP Extensions)
+Jan 26 14:19:40 spoces2 kernel: ACPI: Added _OSI(Processor Aggregator Device)
+Jan 26 14:19:40 spoces2 kernel: ACPI: Executed 1 blocks of module-level executable AML code
+Jan 26 14:19:40 spoces2 kernel: ACPI: Interpreter enabled
+Jan 26 14:19:40 spoces2 kernel: ACPI: (supports S0 S5)
+Jan 26 14:19:40 spoces2 kernel: ACPI: Using IOAPIC for interrupt routing
+Jan 26 14:19:40 spoces2 kernel: PCI: Using host bridge windows from ACPI; if necessary, use "pci=nocrs" and report a bug
+Jan 26 14:19:40 spoces2 kernel: ACPI: Enabled 2 GPEs in block 00 to 07
+Jan 26 14:19:40 spoces2 kernel: ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+Jan 26 14:19:40 spoces2 kernel: acpi PNP0A03:00: _OSC: OS supports [ASPM ClockPM Segments MSI]
+Jan 26 14:19:40 spoces2 kernel: acpi PNP0A03:00: _OSC: not requesting OS control; OS requires [ExtendedConfig ASPM ClockPM MSI]
+Jan 26 14:19:40 spoces2 kernel: acpi PNP0A03:00: fail to add MMCONFIG information, can't access extended PCI configuration space under this bridge.
+Jan 26 14:19:40 spoces2 kernel: PCI host bridge to bus 0000:00
+Jan 26 14:19:40 spoces2 kernel: pci_bus 0000:00: root bus resource [io  0x0000-0x0cf7 window]
+Jan 26 14:19:40 spoces2 kernel: pci_bus 0000:00: root bus resource [io  0x0d00-0xffff window]
+Jan 26 14:19:40 spoces2 kernel: pci_bus 0000:00: root bus resource [mem 0x000a0000-0x000bffff window]
+Jan 26 14:19:40 spoces2 kernel: pci_bus 0000:00: root bus resource [mem 0x40000000-0xffdfffff window]
+Jan 26 14:19:40 spoces2 kernel: pci_bus 0000:00: root bus resource [bus 00-ff]
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:00.0: [8086:1237] type 00 class 0x060000
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:01.0: [8086:7000] type 00 class 0x060100
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:01.1: [8086:7111] type 00 class 0x01018a
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:01.1: reg 0x20: [io  0xd000-0xd00f]
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:01.1: legacy IDE quirk: reg 0x10: [io  0x01f0-0x01f7]
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:01.1: legacy IDE quirk: reg 0x14: [io  0x03f6]
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:01.1: legacy IDE quirk: reg 0x18: [io  0x0170-0x0177]
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:01.1: legacy IDE quirk: reg 0x1c: [io  0x0376]
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:02.0: [80ee:beef] type 00 class 0x030000
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:02.0: reg 0x10: [mem 0xe0000000-0xe0ffffff pref]
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:03.0: [8086:100e] type 00 class 0x020000
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:03.0: reg 0x10: [mem 0xf0000000-0xf001ffff]
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:03.0: reg 0x18: [io  0xd010-0xd017]
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:04.0: [80ee:cafe] type 00 class 0x088000
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:04.0: reg 0x10: [io  0xd020-0xd03f]
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:04.0: reg 0x14: [mem 0xf0400000-0xf07fffff]
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:04.0: reg 0x18: [mem 0xf0800000-0xf0803fff pref]
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:05.0: [8086:2415] type 00 class 0x040100
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:05.0: reg 0x10: [io  0xd100-0xd1ff]
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:05.0: reg 0x14: [io  0xd200-0xd23f]
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:06.0: [106b:003f] type 00 class 0x0c0310
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:06.0: reg 0x10: [mem 0xf0804000-0xf0804fff]
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:07.0: [8086:7113] type 00 class 0x068000
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:07.0: quirk: [io  0x4000-0x403f] claimed by PIIX4 ACPI
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:07.0: quirk: [io  0x4100-0x410f] claimed by PIIX4 SMB
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:0d.0: [8086:2829] type 00 class 0x010601
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:0d.0: reg 0x10: [io  0xd240-0xd247]
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:0d.0: reg 0x18: [io  0xd250-0xd257]
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:0d.0: reg 0x20: [io  0xd260-0xd26f]
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:0d.0: reg 0x24: [mem 0xf0806000-0xf0807fff]
+Jan 26 14:19:40 spoces2 kernel: ACPI: PCI Interrupt Link [LNKA] (IRQs 5 9 10 *11)
+Jan 26 14:19:40 spoces2 kernel: ACPI: PCI Interrupt Link [LNKB] (IRQs 5 9 10 *11)
+Jan 26 14:19:40 spoces2 kernel: ACPI: PCI Interrupt Link [LNKC] (IRQs 5 9 *10 11)
+Jan 26 14:19:40 spoces2 kernel: ACPI: PCI Interrupt Link [LNKD] (IRQs 5 *9 10 11)
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:02.0: vgaarb: setting as boot VGA device
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:02.0: vgaarb: VGA device added: decodes=io+mem,owns=io+mem,locks=none
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:02.0: vgaarb: bridge control possible
+Jan 26 14:19:40 spoces2 kernel: vgaarb: loaded
+Jan 26 14:19:40 spoces2 kernel: EDAC MC: Ver: 3.0.0
+Jan 26 14:19:40 spoces2 kernel: PCI: Using ACPI for IRQ routing
+Jan 26 14:19:40 spoces2 kernel: PCI: pci_cache_line_size set to 64 bytes
+Jan 26 14:19:40 spoces2 kernel: e820: reserve RAM buffer [mem 0x0009fc00-0x0009ffff]
+Jan 26 14:19:40 spoces2 kernel: e820: reserve RAM buffer [mem 0x3fff0000-0x3fffffff]
+Jan 26 14:19:40 spoces2 kernel: NetLabel: Initializing
+Jan 26 14:19:40 spoces2 kernel: NetLabel:  domain hash size = 128
+Jan 26 14:19:40 spoces2 kernel: NetLabel:  protocols = UNLABELED CIPSOv4 CALIPSO
+Jan 26 14:19:40 spoces2 kernel: NetLabel:  unlabeled traffic allowed by default
+Jan 26 14:19:40 spoces2 kernel: clocksource: Switched to clocksource kvm-clock
+Jan 26 14:19:40 spoces2 kernel: VFS: Disk quotas dquot_6.6.0
+Jan 26 14:19:40 spoces2 kernel: VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+Jan 26 14:19:40 spoces2 kernel: pnp: PnP ACPI init
+Jan 26 14:19:40 spoces2 kernel: pnp 00:00: Plug and Play ACPI device, IDs PNP0303 (active)
+Jan 26 14:19:40 spoces2 kernel: pnp 00:01: Plug and Play ACPI device, IDs PNP0f03 (active)
+Jan 26 14:19:40 spoces2 kernel: pnp: PnP ACPI: found 2 devices
+Jan 26 14:19:40 spoces2 kernel: clocksource: acpi_pm: mask: 0xffffff max_cycles: 0xffffff, max_idle_ns: 2085701024 ns
+Jan 26 14:19:40 spoces2 kernel: pci_bus 0000:00: resource 4 [io  0x0000-0x0cf7 window]
+Jan 26 14:19:40 spoces2 kernel: pci_bus 0000:00: resource 5 [io  0x0d00-0xffff window]
+Jan 26 14:19:40 spoces2 kernel: pci_bus 0000:00: resource 6 [mem 0x000a0000-0x000bffff window]
+Jan 26 14:19:40 spoces2 kernel: pci_bus 0000:00: resource 7 [mem 0x40000000-0xffdfffff window]
+Jan 26 14:19:40 spoces2 kernel: NET: Registered protocol family 2
+Jan 26 14:19:40 spoces2 kernel: TCP established hash table entries: 8192 (order: 4, 65536 bytes)
+Jan 26 14:19:40 spoces2 kernel: TCP bind hash table entries: 8192 (order: 5, 131072 bytes)
+Jan 26 14:19:40 spoces2 kernel: TCP: Hash tables configured (established 8192 bind 8192)
+Jan 26 14:19:40 spoces2 kernel: UDP hash table entries: 512 (order: 2, 16384 bytes)
+Jan 26 14:19:40 spoces2 kernel: UDP-Lite hash table entries: 512 (order: 2, 16384 bytes)
+Jan 26 14:19:40 spoces2 kernel: NET: Registered protocol family 1
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:00.0: Limiting direct PCI/PCI transfers
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:01.0: Activating ISA DMA hang workarounds
+Jan 26 14:19:40 spoces2 kernel: pci 0000:00:02.0: Video device with shadowed ROM at [mem 0x000c0000-0x000dffff]
+Jan 26 14:19:40 spoces2 kernel: PCI: CLS 0 bytes, default 64
+Jan 26 14:19:40 spoces2 kernel: Unpacking initramfs...
+Jan 26 14:19:40 spoces2 kernel: Freeing initrd memory: 7036K
+Jan 26 14:19:40 spoces2 kernel: platform rtc_cmos: registered platform RTC device (no PNP device found)
+Jan 26 14:19:40 spoces2 kernel: Scanning for low memory corruption every 60 seconds
+Jan 26 14:19:40 spoces2 kernel: Initialise system trusted keyrings
+Jan 26 14:19:40 spoces2 kernel: Key type blacklist registered
+Jan 26 14:19:40 spoces2 kernel: workingset: timestamp_bits=44 max_order=18 bucket_order=0
+Jan 26 14:19:40 spoces2 kernel: zbud: loaded
+Jan 26 14:19:40 spoces2 kernel: Key type asymmetric registered
+Jan 26 14:19:40 spoces2 kernel: Asymmetric key parser 'x509' registered
+Jan 26 14:19:40 spoces2 kernel: Block layer SCSI generic (bsg) driver version 0.4 loaded (major 247)
+Jan 26 14:19:40 spoces2 kernel: io scheduler noop registered
+Jan 26 14:19:40 spoces2 kernel: io scheduler deadline registered
+Jan 26 14:19:40 spoces2 kernel: io scheduler cfq registered (default)
+Jan 26 14:19:40 spoces2 kernel: io scheduler mq-deadline registered
+Jan 26 14:19:40 spoces2 kernel: io scheduler kyber registered
+Jan 26 14:19:40 spoces2 kernel: io scheduler bfq registered
+Jan 26 14:19:40 spoces2 kernel: vesafb: mode is 640x480x32, linelength=2560, pages=0
+Jan 26 14:19:40 spoces2 kernel: vesafb: scrolling: redraw
+Jan 26 14:19:40 spoces2 kernel: vesafb: Truecolor: size=8:8:8:8, shift=24:16:8:0
+Jan 26 14:19:40 spoces2 kernel: vesafb: framebuffer at 0xe0000000, mapped to 0x000000002652d8af, using 1216k, total 1216k
+Jan 26 14:19:40 spoces2 kernel: Console: switching to colour frame buffer device 80x30
+Jan 26 14:19:40 spoces2 kernel: fb0: VESA VGA frame buffer device
+Jan 26 14:19:40 spoces2 kernel: intel_idle: does not run on family 6 model 15
+Jan 26 14:19:40 spoces2 kernel: input: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0
+Jan 26 14:19:40 spoces2 kernel: ACPI: Power Button [PWRF]
+Jan 26 14:19:40 spoces2 kernel: input: Sleep Button as /devices/LNXSYSTM:00/LNXSLPBN:00/input/input1
+Jan 26 14:19:40 spoces2 kernel: ACPI: Sleep Button [SLPF]
+Jan 26 14:19:40 spoces2 kernel: ACPI: Video Device [GFX0] (multi-head: yes  rom: no  post: no)
+Jan 26 14:19:40 spoces2 kernel: input: Video Bus as /devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A03:00/LNXVIDEO:00/input/input2
+Jan 26 14:19:40 spoces2 kernel: Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+Jan 26 14:19:40 spoces2 kernel: ledtrig-cpu: registered to indicate activity on CPUs
+Jan 26 14:19:40 spoces2 kernel: NET: Registered protocol family 10
+Jan 26 14:19:40 spoces2 kernel: Segment Routing with IPv6
+Jan 26 14:19:40 spoces2 kernel: NET: Registered protocol family 17
+Jan 26 14:19:40 spoces2 kernel: RAS: Correctable Errors collector initialized.
+Jan 26 14:19:40 spoces2 kernel: sched_clock: Marking stable (387384453, 0)->(900431900, -513047447)
+Jan 26 14:19:40 spoces2 kernel: registered taskstats version 1
+Jan 26 14:19:40 spoces2 kernel: Loading compiled-in X.509 certificates
+Jan 26 14:19:40 spoces2 kernel: zswap: loaded using pool lzo/zbud
+Jan 26 14:19:40 spoces2 kernel: Key type big_key registered
+Jan 26 14:19:40 spoces2 kernel:   Magic number: 4:211:345
+Jan 26 14:19:40 spoces2 kernel: tty tty62: hash matches
+Jan 26 14:19:40 spoces2 kernel: hctosys: unable to open rtc device (rtc0)
+Jan 26 14:19:40 spoces2 kernel: Freeing unused kernel memory: 1432K
+Jan 26 14:19:40 spoces2 kernel: Write protecting the kernel read-only data: 16384k
+Jan 26 14:19:40 spoces2 kernel: Freeing unused kernel memory: 2016K
+Jan 26 14:19:40 spoces2 kernel: Freeing unused kernel memory: 872K
+Jan 26 14:19:40 spoces2 kernel: i8042: PNP: PS/2 Controller [PNP0303:PS2K,PNP0f03:PS2M] at 0x60,0x64 irq 1,12
+Jan 26 14:19:40 spoces2 kernel: serio: i8042 KBD port at 0x60,0x64 irq 1
+Jan 26 14:19:40 spoces2 kernel: SCSI subsystem initialized
+Jan 26 14:19:40 spoces2 kernel: serio: i8042 AUX port at 0x60,0x64 irq 12
+Jan 26 14:19:40 spoces2 kernel: ACPI: bus type USB registered
+Jan 26 14:19:40 spoces2 kernel: usbcore: registered new interface driver usbfs
+Jan 26 14:19:40 spoces2 kernel: usbcore: registered new interface driver hub
+Jan 26 14:19:40 spoces2 kernel: libata version 3.00 loaded.
+Jan 26 14:19:40 spoces2 kernel: ata_piix 0000:00:01.1: version 2.13
+Jan 26 14:19:40 spoces2 kernel: usbcore: registered new device driver usb
+Jan 26 14:19:40 spoces2 kernel: ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+Jan 26 14:19:40 spoces2 kernel: scsi host0: ata_piix
+Jan 26 14:19:40 spoces2 kernel: scsi host1: ata_piix
+Jan 26 14:19:40 spoces2 kernel: ata1: PATA max UDMA/33 cmd 0x1f0 ctl 0x3f6 bmdma 0xd000 irq 14
+Jan 26 14:19:40 spoces2 kernel: ata2: PATA max UDMA/33 cmd 0x170 ctl 0x376 bmdma 0xd008 irq 15
+Jan 26 14:19:40 spoces2 kernel: ahci 0000:00:0d.0: version 3.0
+Jan 26 14:19:40 spoces2 kernel: ahci 0000:00:0d.0: SSS flag set, parallel bus scan disabled
+Jan 26 14:19:40 spoces2 kernel: ahci 0000:00:0d.0: AHCI 0001.0100 32 slots 2 ports 3 Gbps 0x3 impl SATA mode
+Jan 26 14:19:40 spoces2 kernel: ahci 0000:00:0d.0: flags: 64bit ncq stag only ccc 
+Jan 26 14:19:40 spoces2 kernel: ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+Jan 26 14:19:40 spoces2 kernel: Warning! ehci_hcd should always be loaded before uhci_hcd and ohci_hcd, not after
+Jan 26 14:19:40 spoces2 kernel: ehci-pci: EHCI PCI platform driver
+Jan 26 14:19:40 spoces2 kernel: ohci-pci: OHCI PCI platform driver
+Jan 26 14:19:40 spoces2 kernel: scsi host2: ahci
+Jan 26 14:19:40 spoces2 kernel: scsi host3: ahci
+Jan 26 14:19:40 spoces2 kernel: ata3: SATA max UDMA/133 abar m8192@0xf0806000 port 0xf0806100 irq 21
+Jan 26 14:19:40 spoces2 kernel: ata4: SATA max UDMA/133 abar m8192@0xf0806000 port 0xf0806180 irq 21
+Jan 26 14:19:40 spoces2 kernel: ohci-pci 0000:00:06.0: OHCI PCI host controller
+Jan 26 14:19:40 spoces2 kernel: ohci-pci 0000:00:06.0: new USB bus registered, assigned bus number 1
+Jan 26 14:19:40 spoces2 kernel: ohci-pci 0000:00:06.0: irq 22, io mem 0xf0804000
+Jan 26 14:19:40 spoces2 kernel: input: AT Translated Set 2 keyboard as /devices/platform/i8042/serio0/input/input3
+Jan 26 14:19:40 spoces2 kernel: usb usb1: New USB device found, idVendor=1d6b, idProduct=0001
+Jan 26 14:19:40 spoces2 kernel: usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+Jan 26 14:19:40 spoces2 kernel: usb usb1: Product: OHCI PCI host controller
+Jan 26 14:19:40 spoces2 kernel: usb usb1: Manufacturer: Linux 4.15.15-1-ARCH ohci_hcd
+Jan 26 14:19:40 spoces2 kernel: usb usb1: SerialNumber: 0000:00:06.0
+Jan 26 14:19:40 spoces2 kernel: hub 1-0:1.0: USB hub found
+Jan 26 14:19:40 spoces2 kernel: hub 1-0:1.0: 12 ports detected
+Jan 26 14:19:40 spoces2 kernel: ata2.00: ATAPI: VBOX CD-ROM, 1.0, max UDMA/133
+Jan 26 14:19:40 spoces2 kernel: ata2.00: configured for UDMA/33
+Jan 26 14:19:40 spoces2 kernel: scsi 1:0:0:0: CD-ROM            VBOX     CD-ROM           1.0  PQ: 0 ANSI: 5
+Jan 26 14:19:40 spoces2 kernel: ata3: SATA link up 3.0 Gbps (SStatus 123 SControl 300)
+Jan 26 14:19:40 spoces2 kernel: ata3.00: ATA-6: VBOX HARDDISK, 1.0, max UDMA/133
+Jan 26 14:19:40 spoces2 kernel: ata3.00: 20971520 sectors, multi 128: LBA48 NCQ (depth 31/32)
+Jan 26 14:19:40 spoces2 kernel: ata3.00: configured for UDMA/133
+Jan 26 14:19:40 spoces2 kernel: scsi 2:0:0:0: Direct-Access     ATA      VBOX HARDDISK    1.0  PQ: 0 ANSI: 5
+Jan 26 14:19:40 spoces2 kernel: usb 1-1: new full-speed USB device number 2 using ohci-pci
+Jan 26 14:19:40 spoces2 kernel: ata4: SATA link up 3.0 Gbps (SStatus 123 SControl 300)
+Jan 26 14:19:40 spoces2 kernel: ata4.00: ATA-6: VBOX HARDDISK, 1.0, max UDMA/133
+Jan 26 14:19:40 spoces2 kernel: ata4.00: 2097152 sectors, multi 128: LBA48 NCQ (depth 31/32)
+Jan 26 14:19:40 spoces2 kernel: ata4.00: configured for UDMA/133
+Jan 26 14:19:40 spoces2 kernel: scsi 3:0:0:0: Direct-Access     ATA      VBOX HARDDISK    1.0  PQ: 0 ANSI: 5
+Jan 26 14:19:40 spoces2 kernel: sd 2:0:0:0: [sda] 20971520 512-byte logical blocks: (10.7 GB/10.0 GiB)
+Jan 26 14:19:40 spoces2 kernel: sd 2:0:0:0: [sda] Write Protect is off
+Jan 26 14:19:40 spoces2 kernel: sd 2:0:0:0: [sda] Mode Sense: 00 3a 00 00
+Jan 26 14:19:40 spoces2 kernel: sd 2:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+Jan 26 14:19:40 spoces2 kernel: usb 1-1: New USB device found, idVendor=80ee, idProduct=0021
+Jan 26 14:19:40 spoces2 kernel: usb 1-1: New USB device strings: Mfr=1, Product=3, SerialNumber=0
+Jan 26 14:19:40 spoces2 kernel: usb 1-1: Product: USB Tablet
+Jan 26 14:19:40 spoces2 kernel: usb 1-1: Manufacturer: VirtualBox
+Jan 26 14:19:40 spoces2 kernel: sd 3:0:0:0: [sdb] 2097152 512-byte logical blocks: (1.07 GB/1.00 GiB)
+Jan 26 14:19:40 spoces2 kernel: sd 3:0:0:0: [sdb] Write Protect is off
+Jan 26 14:19:40 spoces2 kernel: sd 3:0:0:0: [sdb] Mode Sense: 00 3a 00 00
+Jan 26 14:19:40 spoces2 kernel: sd 3:0:0:0: [sdb] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+Jan 26 14:19:40 spoces2 kernel:  sda: sda1
+Jan 26 14:19:40 spoces2 kernel:  sdb: sdb1
+Jan 26 14:19:40 spoces2 kernel: sd 3:0:0:0: [sdb] Attached SCSI disk
+Jan 26 14:19:40 spoces2 kernel: sd 2:0:0:0: [sda] Attached SCSI disk
+Jan 26 14:19:40 spoces2 kernel: sr 1:0:0:0: [sr0] scsi3-mmc drive: 32x/32x xa/form2 tray
+Jan 26 14:19:40 spoces2 kernel: cdrom: Uniform CD-ROM driver Revision: 3.20
+Jan 26 14:19:40 spoces2 kernel: sr 1:0:0:0: Attached scsi CD-ROM sr0
+Jan 26 14:19:40 spoces2 kernel: hidraw: raw HID events driver (C) Jiri Kosina
+Jan 26 14:19:40 spoces2 kernel: usbcore: registered new interface driver usbhid
+Jan 26 14:19:40 spoces2 kernel: usbhid: USB HID core driver
+Jan 26 14:19:40 spoces2 kernel: input: VirtualBox USB Tablet as /devices/pci0000:00/0000:00:06.0/usb1/1-1/1-1:1.0/0003:80EE:0021.0001/input/input5
+Jan 26 14:19:40 spoces2 kernel: hid-generic 0003:80EE:0021.0001: input,hidraw0: USB HID v1.10 Mouse [VirtualBox USB Tablet] on usb-0000:00:06.0-1/input0
+Jan 26 14:19:40 spoces2 kernel: random: crng init done
+Jan 26 14:19:40 spoces2 kernel: EXT4-fs (sda1): mounted filesystem with ordered data mode. Opts: (null)
+Jan 26 14:19:40 spoces2 kernel: ip_tables: (C) 2000-2006 Netfilter Core Team
+Jan 26 14:19:40 spoces2 kernel: EXT4-fs (sda1): re-mounted. Opts: data=ordered
+Jan 26 14:19:40 spoces2 kernel: vboxguest: loading out-of-tree module taints kernel.
+Jan 26 14:19:40 spoces2 kernel: vgdrvHeartbeatInit: Setting up heartbeat to trigger every 2000 milliseconds
+Jan 26 14:19:40 spoces2 kernel: input: Unspecified device as /devices/pci0000:00/0000:00:04.0/input/input6
+Jan 26 14:19:40 spoces2 kernel: vboxguest: misc device minor 57, IRQ 20, I/O port d020, MMIO at 00000000f0400000 (size 0x400000)
+Jan 26 14:19:40 spoces2 kernel: vboxguest: Successfully loaded version 5.2.8 (interface 0x00010004)
+Jan 26 14:19:40 spoces2 kernel: vboxsf: Successfully loaded version 5.2.8 (interface 0x00010004)
+Jan 26 14:19:40 spoces2 kernel: Linux agpgart interface v0.103
+Jan 26 14:19:40 spoces systemd: systemd 238 running in system mode. (+PAM -AUDIT -SELINUX -IMA -APPARMOR +SMACK -SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT +GNUTLS +ACL +XZ +LZ4 +SECCOMP +BLKID +ELFUTILS +KMOD -IDN2 +IDN +PCRE2 default-hierarchy=hybrid)
+Jan 26 14:19:40 spoces systemd: Detected virtualization oracle.
+Jan 26 14:19:40 spoces systemd: Detected architecture x86-64.
+Jan 26 14:19:40 spoces systemd: Set hostname to <spoces>.
+Jan 26 14:19:40 spoces systemd: Set up automount Arbitrary Executable File Formats File System Automount Point.
+Jan 26 14:19:40 spoces systemd: Listening on Journal Socket (/dev/log).
+Jan 26 14:19:40 spoces systemd: Reached target Login Prompts.
+Jan 26 14:19:40 spoces systemd: Listening on Device-mapper event daemon FIFOs.
+Jan 26 14:19:40 spoces systemd: Listening on Journal Socket.
+Jan 26 14:19:40 spoces systemd: Starting Create list of required static device nodes for the current kernel...
+Jan 26 14:19:40 spoces systemd-journald[177]: Journal started
+Jan 26 14:19:40 spoces systemd-journald[177]: Runtime journal (/run/log/journal/a56dcdfe74fd43f89ecdab8612799547) is 6.1M, max 49.4M, 43.2M free.
+Jan 26 14:19:40 spoces systemd[1]: Started Create list of required static device nodes for the current kernel.
+Jan 26 14:19:40 spoces systemd[1]: Mounted Huge Pages File System.
+Jan 26 14:19:40 spoces systemd[1]: Mounted POSIX Message Queue File System.
+Jan 26 14:19:40 spoces systemd[1]: Mounted Temporary Directory (/tmp).
+Jan 26 14:19:40 spoces systemd[1]: Mounted Kernel Debug File System.
+Jan 26 14:19:40 spoces systemd[1]: Started LVM2 metadata daemon.
+Jan 26 14:19:40 spoces systemd[1]: Started Remount Root and Kernel File Systems.
+Jan 26 14:19:40 spoces systemd[1]: Starting Create Static Device Nodes in /dev...
+Jan 26 14:19:40 spoces systemd[1]: Starting Load/Save Random Seed...
+Jan 26 14:19:40 spoces systemd[1]: Starting Flush Journal to Persistent Storage...
+Jan 26 14:19:40 spoces systemd-modules-load[184]: Inserted module 'vboxguest'
+Jan 26 14:19:40 spoces systemd-modules-load[184]: Inserted module 'vboxsf'
+Jan 26 14:19:41 spoces2 kernel: [drm] VRAM 01000000
+Jan 26 14:19:41 spoces2 kernel: [TTM] Zone  kernel: Available graphics memory: 506458 kiB
+Jan 26 14:19:41 spoces2 kernel: [TTM] Initializing pool allocator
+Jan 26 14:19:41 spoces2 kernel: [TTM] Initializing DMA pool allocator
+Jan 26 14:19:41 spoces2 kernel: checking generic (e0000000 130000) vs hw (e0000000 1000000)
+Jan 26 14:19:41 spoces2 kernel: fb: switching to vboxdrmfb from VESA VGA
+Jan 26 14:19:41 spoces2 kernel: Console: switching to colour dummy device 80x25
+Jan 26 14:19:41 spoces2 kernel: fbcon: vboxdrmfb (fb0) is primary device
+Jan 26 14:19:41 spoces2 kernel: Console: switching to colour frame buffer device 100x37
+Jan 26 14:19:41 spoces2 kernel: vboxvideo 0000:00:02.0: fb0: vboxdrmfb frame buffer device
+Jan 26 14:19:41 spoces2 kernel: [drm] Initialized vboxvideo 1.0.0 20130823 for 0000:00:02.0 on minor 0
+Jan 26 14:19:41 spoces2 kernel: vboxdrv: Found 1 processor cores
+Jan 26 14:19:41 spoces2 kernel: vboxdrv: TSC mode is Synchronous, tentative frequency 2666634081 Hz
+Jan 26 14:19:41 spoces2 kernel: vboxdrv: Successfully loaded version 5.2.8 (interface 0x00290001)
+Jan 26 14:19:41 spoces systemd[1]: Started Load/Save Random Seed.
+Jan 26 14:19:41 spoces systemd-journald[177]: Time spent on flushing to /var is 47.451ms for 409 entries.
+Jan 26 14:19:41 spoces systemd-journald[177]: System journal (/var/log/journal/a56dcdfe74fd43f89ecdab8612799547) is 176.0M, max 1001.4M, 825.3M free.
+Jan 26 14:19:41 spoces systemd[1]: Started Create Static Device Nodes in /dev.
+Jan 26 14:19:41 spoces systemd[1]: Starting udev Kernel Device Manager...
+Jan 26 14:19:41 spoces systemd[1]: Started udev Kernel Device Manager.
+Jan 26 14:19:41 spoces systemd[1]: Started Flush Journal to Persistent Storage.
+Jan 26 14:19:41 spoces systemd-modules-load[184]: Inserted module 'vboxvideo'
+Jan 26 14:19:41 spoces systemd-modules-load[184]: Inserted module 'vboxdrv'
+Jan 26 14:19:41 spoces systemd-modules-load[184]: Inserted module 'vboxpci'
+Jan 26 14:19:41 spoces systemd-modules-load[184]: Inserted module 'vboxnetadp'
+Jan 26 14:19:41 spoces systemd-modules-load[184]: Inserted module 'vboxnetflt'
+Jan 26 14:19:42 spoces systemd[1]: Started Load Kernel Modules.
+Jan 26 14:19:42 spoces systemd[1]: Starting Apply Kernel Variables...
+Jan 26 14:19:42 spoces systemd[1]: Mounting Kernel Configuration File System...
+Jan 26 14:19:42 spoces systemd[1]: Started udev Coldplug all Devices.
+Jan 26 14:19:42 spoces systemd[1]: Started Apply Kernel Variables.
+Jan 26 14:19:42 spoces systemd[1]: Mounted Kernel Configuration File System.
+Jan 26 14:19:42 spoces systemd[1]: Starting Network Service...
+Jan 26 14:19:42 spoces systemd-networkd[208]: Enumeration completed
+Jan 26 14:19:42 spoces systemd[1]: Started Network Service.
+Jan 26 14:19:43 spoces2 kernel: ACPI: AC Adapter [AC] (on-line)
+Jan 26 14:19:43 spoces2 kernel: mousedev: PS/2 mouse device common for all mice
+Jan 26 14:19:43 spoces2 kernel: piix4_smbus 0000:00:07.0: SMBus Host Controller at 0x4100, revision 0
+Jan 26 14:19:43 spoces2 kernel: input: PC Speaker as /devices/platform/pcspkr/input/input7
+Jan 26 14:19:43 spoces2 kernel: e1000: Intel(R) PRO/1000 Network Driver - version 7.3.21-k8-NAPI
+Jan 26 14:19:43 spoces2 kernel: e1000: Copyright (c) 1999-2006 Intel Corporation.
+Jan 26 14:19:44 spoces2 kernel: rtc_cmos rtc_cmos: rtc core: registered rtc_cmos as rtc0
+Jan 26 14:19:44 spoces2 kernel: rtc_cmos rtc_cmos: alarms up to one day, 114 bytes nvram
+Jan 26 14:19:44 spoces2 kernel: intel_powerclamp: No package C-state available
+Jan 26 14:19:44 spoces2 kernel: input: ImExPS/2 Generic Explorer Mouse as /devices/platform/i8042/serio1/input/input8
+Jan 26 14:19:44 spoces systemd-udevd[218]: link_config: autonegotiation is unset or enabled, the speed and duplex are not writable.
+Jan 26 14:19:45 spoces systemd[1]: Started Monitoring of LVM2 mirrors, snapshots etc. using dmeventd or progress polling.
+Jan 26 14:19:45 spoces systemd[1]: Reached target Local File Systems (Pre).
+Jan 26 14:19:45 spoces systemd[1]: Reached target Local File Systems.
+Jan 26 14:19:45 spoces systemd[1]: Starting Create Volatile Files and Directories...
+Jan 26 14:19:46 spoces systemd[1]: Started Create Volatile Files and Directories.
+Jan 26 14:19:46 spoces systemd[1]: Starting Update UTMP about System Boot/Shutdown...
+Jan 26 14:19:46 spoces systemd[1]: Started Update UTMP about System Boot/Shutdown.
+Jan 26 14:19:46 spoces systemd[1]: Reached target System Initialization.
+Jan 26 14:19:46 spoces systemd[1]: Listening on D-Bus System Message Bus Socket.
+Jan 26 14:19:46 spoces systemd[1]: Reached target Sockets.
+Jan 26 14:19:46 spoces systemd[1]: Reached target Basic System.
+Jan 26 14:19:46 spoces systemd[1]: Starting Login Service...
+Jan 26 14:19:46 spoces systemd[1]: Starting System Logger Daemon "default" instance...
+Jan 26 14:19:46 spoces systemd[1]: Started D-Bus System Message Bus.
+Jan 26 14:19:46 spoces systemd[1]: Started Open vSwitch Database Server.
+Jan 26 14:19:46 spoces systemd[1]: Started Daily verification of password and group files.
+Jan 26 14:19:46 spoces systemd[1]: Started POX Remote Controller.
+Jan 26 14:19:46 spoces systemd[1]: Starting Open vSwitch Daemon...
+Jan 26 14:19:46 spoces systemd[1]: Started Daily rotation of log files.
+Jan 26 14:19:46 spoces systemd[1]: Started Daily man-db cache update.
+Jan 26 14:19:46 spoces systemd[1]: Started Daily Cleanup of Temporary Directories.
+Jan 26 14:19:46 spoces systemd[1]: Reached target Timers.
+Jan 26 14:19:46 spoces dbus-daemon[245]: [system] Successfully activated service 'org.freedesktop.systemd1'
+Jan 26 14:19:46 spoces systemd[1]: Starting Update man-db cache...
+Jan 26 14:19:46 SecOpServer systemd-logind[242]: New seat seat0.
+Jan 26 14:19:47 SecOpServer systemd-logind[242]: Watching system buttons on /dev/input/event1 (Sleep Button)
+Jan 26 14:19:47 spoces2 kernel: nf_conntrack version 0.5.0 (8192 buckets, 32768 max)
+Jan 26 14:19:47 SecOpServer systemd-logind[242]: Watching system buttons on /dev/input/event0 (Power Button)
+Jan 26 14:19:47 SecOpServer systemd-logind[242]: Watching system buttons on /dev/input/event3 (AT Translated Set 2 keyboard)
+Jan 26 14:19:47 spoces2 kernel: openvswitch: Open vSwitch switching datapath
+Jan 26 14:19:48 spoces2 kernel: clocksource: tsc: mask: 0xffffffffffffffff max_cycles: 0x26701ee5f6c, max_idle_ns: 440795291485 ns
+Jan 26 14:19:48 SecOpServer sshd[272]: Server listening on 0.0.0.0 port 22.
+Jan 26 14:19:48 SecOpServer sshd[272]: Server listening on :: port 22.
+Jan 26 14:19:51 spoces2 kernel: e1000 0000:00:03.0 eth0: (PCI:33MHz:32-bit) 08:00:27:15:8d:06
+Jan 26 14:19:51 spoces2 kernel: e1000 0000:00:03.0 eth0: Intel(R) PRO/1000 Network Connection
+Jan 26 14:19:51 spoces2 kernel: e1000 0000:00:03.0 enp0s3: renamed from eth0
+Jan 26 14:19:51 spoces2 kernel: IPv6: ADDRCONF(NETDEV_UP): enp0s3: link is not ready
+Jan 26 14:19:51 spoces2 kernel: snd_intel8x0 0000:00:05.0: white list rate for 1028:0177 is 48000
+Jan 26 14:19:53 spoces2 kernel: e1000: enp0s3 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: RX
+Jan 26 14:19:53 spoces2 kernel: IPv6: ADDRCONF(NETDEV_CHANGE): enp0s3: link becomes ready
+Jan 26 14:19:53 SecOpServer lightdm[307]: pam_unix(lightdm-greeter:session): session opened for user lightdm by (uid=0)
+Jan 26 14:19:53 SecOpServer systemd-logind[242]: New session c1 of user lightdm.
+Jan 26 14:19:54 SecOpServer systemd[311]: pam_unix(systemd-user:session): session opened for user lightdm by (uid=0)
+Jan 26 14:20:30 SecOpServer lightdm[307]: pam_unix(lightdm-greeter:session): session closed for user lightdm
+Jan 26 14:20:30 SecOpServer systemd-logind[242]: Removed session c1.
+Jan 26 14:20:30 SecOpServer lightdm[335]: pam_unix(lightdm:session): session opened for user analyst by (uid=0)
+Jan 26 14:20:31 SecOpServer systemd-logind[242]: New session c2 of user analyst.
+Jan 26 14:20:31 SecOpServer systemd[343]: pam_unix(systemd-user:session): session opened for user analyst by (uid=0)
+Jan 26 14:20:32 SecOpServer polkitd[366]: Loading rules from directory /etc/polkit-1/rules.d
+Jan 26 14:20:32 SecOpServer polkitd[366]: Loading rules from directory /usr/share/polkit-1/rules.d
+Jan 26 14:20:32 SecOpServer polkitd[366]: Finished loading, compiling and executing 3 rules
+Jan 26 14:20:32 SecOpServer polkitd[366]: Acquired the name org.freedesktop.PolicyKit1 on the system bus
+Jan 26 14:20:39 SecOpServer polkitd[366]: Registered Authentication Agent for unix-session:c2 (system bus name :1.17 [/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1], object path /org/gnome/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+Jan 26 14:21:05 SecOpServer sudo[478]:  analyst : TTY=pts/0 ; PWD=/home/analyst ; USER=root ; COMMAND=/usr/bin/su
+Jan 26 14:21:05 SecOpServer sudo[478]: pam_unix(sudo:session): session opened for user root by (uid=0)
+Jan 26 14:21:05 SecOpServer su[479]: (to root) root on pts/0
+Jan 26 14:21:05 SecOpServer su[479]: pam_unix(su:session): session opened for user root by (uid=0)
+Jan 26 14:31:22 SecOpServer sudo[526]:  analyst : TTY=pts/1 ; PWD=/home/analyst ; USER=root ; COMMAND=/usr/bin/cat /var/log/messages
+Jan 26 14:31:22 SecOpServer sudo[526]: pam_unix(sudo:session): session opened for user root by (uid=0)
+Jan 26 14:31:22 SecOpServer sudo[526]: pam_unix(sudo:session): session closed for user root
+Jan 26 15:04:19 SecOpServer sudo[608]: pam_unix(sudo:auth): authentication failure; logname= uid=1000 euid=0 tty=/dev/pts/1 ruser=analyst rhost=  user=analyst
+Jan 26 15:04:28 SecOpServer sudo[608]:  analyst : TTY=pts/1 ; PWD=/home/analyst ; USER=root ; COMMAND=/usr/bin/su
+Jan 26 15:04:28 SecOpServer sudo[608]: pam_unix(sudo:session): session opened for user root by (uid=0)
+Jan 26 15:04:28 SecOpServer su[611]: (to root) root on pts/1
+Jan 26 15:04:28 SecOpServer su[611]: pam_unix(su:session): session opened for user root by (uid=0)
