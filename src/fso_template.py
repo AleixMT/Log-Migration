@@ -7,8 +7,9 @@ Data: 3/3/2020
 Versio: 1.0
 """
 # imports tipics/generics
+import sys
 # import os   # os.path, os.stat, os.remove ...
-# from sys import stderr
+from sys import stderr
 # from stat import filemode
 
 # imports pel GUI
