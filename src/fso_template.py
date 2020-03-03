@@ -7,9 +7,9 @@ Data: 3/3/2020
 Versio: 1.0
 """
 # imports tipics/generics
-import sys
+# import sys
 # import os   # os.path, os.stat, os.remove ...
-from sys import stderr
+# from sys import stderr
 # from stat import filemode
 
 # imports pel GUI
@@ -51,6 +51,22 @@ def crea_connexio(database):
 
 
 def crea_taula(cur, taula_sql):
+    # poden tenir diverses codificacions(ascii, utf - 8, etc)
+    # poden contenir parts binàries
+    # poden estar comprimits amb gzip(ex: syslog.2.gz)
+
+
+    # Definicio de la taula amb els camps dels logs
+
+
+    sql_crea_taula = """CREATE TABLE events (
+    # >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
+                       .....
+                        );"""
+
+    # IMPORTAR FITXER DE LOG a BD
+    # >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
+
     try:
         cur.execute(taula_sql)
     except sqlite3.Error as error:
@@ -58,28 +74,39 @@ def crea_taula(cur, taula_sql):
 
 
 def buscaMes():
+    # QUERIES SQL a la BD >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
     n = 66
     status.set("Elements filtrats: " + str(n))
     pass
 
 
 def buscaData():
+    # QUERIES SQL a la BD >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
+
     pass
 
 
 def buscaMaquina():
+    # QUERIES SQL a la BD >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
+
     pass
 
 
 def buscaProces():
+    # QUERIES SQL a la BD >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
+
     pass
 
 
 def buscaPID():
+    # QUERIES SQL a la BD >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
+
     pass
 
 
 def buscaTots():
+    # QUERIES SQL a la BD >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
+
     pass
 
 
@@ -98,17 +125,6 @@ def tancaGUI():
     guiRoot.quit()
 
 
-# Definicio de la taula amb els camps dels logs
-sql_crea_taula = """CREATE TABLE events (
-# >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
-                        .....
-                        );"""
-
-# IMPORTAR FITXER DE LOG a BD
-# >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
-
-# QUERIES SQL a la BD
-# >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
 
 # tkinter GUI
 guiRoot = Tk()
