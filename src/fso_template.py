@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
-# Practica 1 de FSO-2019/20
-# Autors: Pedro Espadas
-# Data: 3/3/2020
-# Versio: 1.0
-
+"""
+Practica 1 de FSO-2019/20
+Autors: Pedro Espadas
+Data: 3/3/2020
+Versio: 1.0
+"""
 # imports tipics/generics
 # import os   # os.path, os.stat, os.remove ...
 # from sys import stderr
@@ -25,10 +25,8 @@ import sqlite3
 # import urllib.parse         # guardar events a la DB amb cars especials
 # import gzip                 # per si el log esta comprimit
 
+
 # BD SQLITE
-# https://docs.python.org/3/library/sqlite3.html
-
-
 def tracta_excepcio_sql(error, sql):
     exception_type = type(error).__name__
     print("\n", exception_type, file=sys.stderr)
@@ -41,13 +39,13 @@ def tracta_excepcio_sql(error, sql):
 def crea_connexio(database):
     con = None
     cur = None  # Added to delete warning referenced before assignment
-    sqlCmd = None  # Added to delete warning referenced before assignment
+    sqlcmd = None  # Added to delete warning referenced before assignment
     try:
-        sqlCmd = None  # Connectar proces de sql
+        sqlcmd = None  # Connectar proces de sql
         con = sqlite3.connect(database)
         cur = con.cursor()
     except sqlite3.Error as err:
-        tracta_excepcio_sql(err, sqlCmd)  # Connectar processos de sql
+        tracta_excepcio_sql(err, sqlcmd)  # Connectar processos de sql
     return con, cur
 
 
@@ -56,19 +54,6 @@ def crea_taula(cur, taula_sql):
         cur.execute(taula_sql)
     except sqlite3.Error as error:
         tracta_excepcio_sql(error, taula_sql)
-
-
-# Definicio de la taula amb els camps dels logs
-sql_crea_taula = """CREATE TABLE events (
-# >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
-                        .....
-                        );"""
-
-# IMPORTAR FITXER DE LOG a BD
-# >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
-
-# QUERIES SQL a la BD
-# >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
 
 
 def buscaMes():
@@ -108,16 +93,27 @@ def exportaFiltrats():
     pass
 
 
+def tancaGUI():
+    guiRoot.quit()
+
+
+# Definicio de la taula amb els camps dels logs
+sql_crea_taula = """CREATE TABLE events (
+# >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
+                        .....
+                        );"""
+
+# IMPORTAR FITXER DE LOG a BD
+# >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
+
+# QUERIES SQL a la BD
+# >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
+
 # tkinter GUI
 guiRoot = Tk()
 guiRoot.title("Filtrar entrades de LOG a la BD")
 guiRoot.minsize(600, 400)
 cerca = StringVar()  # variable usada en els QUERIES
-
-
-def tancaGUI():
-    guiRoot.quit()
-
 
 # layout del GUI: 4 marcs apilats
 frameCerca = Frame(guiRoot)
