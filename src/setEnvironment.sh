@@ -19,7 +19,6 @@ if [ "$(whoami)" != "root" ]; then  # executed if the user is root
 	mkdir -p ~/.local/share/applications
 
 	# pycharm
-	echo "Installing pycharm"
 	cd $userBinariesFolder
 	pycharm_version=pycharm-community-2019.1.1  # targeted pycharm version
 	if [ ! -d $pycharm_version ]; then  # Do installation only if the program is present
@@ -42,6 +41,10 @@ Terminal=false
 StartupWMClass=jetbrains-pycharm"
 		echo -e "$pycharm_launcher" > ~/.local/share/applications/pycharm.desktop
 		chmod 775 ~/.local/share/applications/pycharm.desktop
+	fi
+
+	if [ -z "$(echo $PATH | grep -Eo "~/.local/bin" )" ]; then 
+		echo "export PATH=$PATH:~/.local/bin" >> ~/.bashrc
 	fi
 
 else
