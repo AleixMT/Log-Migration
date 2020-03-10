@@ -14,7 +14,7 @@ Versio: 1.0
 
 # imports pel GUI
 from tkinter import *   # GUI
-# from tkinter import filedialog	# per a demanar fitxers
+from tkinter import filedialog	# per a demanar fitxers
 from tkinter import messagebox  # per a mostrar missatges a l’usuari
 # https://docs.python.org/3.9/library/tkinter.messagebox.html
 
@@ -50,10 +50,25 @@ def crea_connexio(database):
     return con, cur
 
 
-def crea_taula(cur, taula_sql):
+def crea_taula(fileHandler, cur=None, taula_sql=None):
     # poden tenir diverses codificacions(ascii, utf - 8, etc)
     # poden contenir parts binàries
     # poden estar comprimits amb gzip(ex: syslog.2.gz)
+
+# Crear tabla TODO
+    
+    for line in fileHandler.readlines():
+        values = validateLine(line)
+        if values :
+            print ("Validat Correctament")
+            print (values)
+        else:
+            print ("Validat Incorrectament")
+            pass
+
+
+
+
 
 
     # Definicio de la taula amb els camps dels logs
@@ -124,6 +139,145 @@ def exportaFiltrats():
 def tancaGUI():
     guiRoot.quit()
 
+def validateLine(line):
+
+    mesosPossibles = ["Gen", "Jan", "Feb", "Ene", "Mar", "May", "Mai", "Jun", "Jul", "Aug", "Ago", "Set", "Sep", "Oct",
+                      "Nov", "Des", "Dic", "Abr", "Apr"]
+    values = []
+    # Eliminar espais repetits
+    newline = ""
+    first = True
+    for i in range(len(line)):
+        actualchar = line[len(line) - 1]
+        if actualchar.__eq__(" "):
+            if first:
+                newline = actualchar + newline
+                first = False
+            else:
+                pass
+        else:
+            newline = actualchar + newline
+            first = True
+        if len(line) - 1 > 0:
+            line = line[0:len(line) - 1]
+
+    #Formato 1
+    formato1 = False
+    try:
+        camps = newline.split(" ")
+        mes = camps[0]
+        dia = int(camps[1])
+        temps = camps[2]
+        tempsCamps = temps.split(":")
+        hores = int(tempsCamps[0])
+        minuts = int(tempsCamps[1])
+        segons = int(tempsCamps[2])
+        nomMaquina = camps[3]
+        nomProcesPID = camps[4]
+        nomProcesPID = nomProcesPID.split("[")
+        nomDimoni = nomProcesPID[0]
+        PID = int(nomProcesPID[1].split("]")[0])
+
+
+
+
+        missatge = camps[5:]
+        reescriuMissatge = " ".join(missatge)
+        print (missatge)
+        print (reescriuMissatge)
+        if mes not in mesosPossibles:
+            print("Mes incorrecte")
+            raise
+        if dia < 1 | dia > 31:
+            print("Dia incorrecte")
+            raise
+
+        if hores < 0 | hores > 23:
+            print("Hora incorrecte")
+            raise
+        if minuts < 0 | minuts > 59:
+            print("Minuts incorrectes")
+            raise
+        if segons < 0 | segons > 59:
+            print("Segons incorrectes")
+            raise
+
+        formato1 = True
+        values.append(mes)
+        values.append(dia)
+        values.append(hores)
+        values.append(minuts)
+        values.append(segons)
+        values.append(nomMaquina)
+        values.append(nomDimoni)
+        values.append(PID)
+        values.append (missatge)
+
+
+    except:
+
+        print ("Formato incorrecto")
+
+    #Formato 2
+    formato2 = False
+    if not formato1:
+        try:
+            camps = newline.split(" ")
+            mes = camps[0]
+            dia = int(camps[1])
+            temps = camps[2]
+            tempsCamps = temps.split(":")
+            hores = int(tempsCamps[0])
+            minuts = int(tempsCamps[1])
+            segons = int(tempsCamps[2])
+            nomMaquina = camps[3]
+            nomProces= camps[4]
+            missatge = camps[5:]
+            reescriuMissatge = " ".join(missatge)
+            print(missatge)
+            print(reescriuMissatge)
+            if mes not in mesosPossibles:
+                print("Mes incorrecte")
+                raise
+            if dia < 1 | dia > 31:
+                print("Dia incorrecte")
+                raise
+
+            if hores < 0 | hores > 23:
+                print("Hora incorrecte")
+                raise
+            if minuts < 0 | minuts > 59:
+                print("Minuts incorrectes")
+                raise
+            if segons < 0 | segons > 59:
+                print("Segons incorrectes")
+                raise
+
+            formato2 = True
+            values.append(mes)
+            values.append(dia)
+            values.append(hores)
+            values.append(minuts)
+            values.append(segons)
+            values.append(nomMaquina)
+            values.append(nomProces)
+            values.append(missatge)
+
+        except:
+
+            print("Formato incorrecto")
+
+    if not (formato1 | formato2):
+        print("esto es lalinea: " + newline)
+        print(newline, file=sys.stderr)
+        return values
+    else:
+        return values
+
+
+
+
+
 
 
 # tkinter GUI
@@ -177,6 +331,17 @@ frameStatus.pack(side=RIGHT, expand=False, padx=2)
 # MAIN
 
 nova = messagebox.askyesno("Nova DB o vella", "Vols crear una DB nova ?")
+
+if nova:
+    fileHandler = filedialog.askopenfile("r")
+    crea_taula(fileHandler)
+    pass
+else:
+    pass
+
+
+
+
 
 # >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
 
