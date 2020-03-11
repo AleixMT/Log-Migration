@@ -20,6 +20,9 @@ from tkinter import messagebox  # per a mostrar missatges a l’usuari
 
 # imports específics d'aquesta practica
 import sqlite3
+import chardet
+import urllib
+
 
 
 # imports auxiliars/secondaris
@@ -59,36 +62,39 @@ def crea_taula(fileHandler, connection=None, cursor=None):
 
     # Create table
     try:
-        sqlcmd = '''CREATE TABLE LOGS
-                             (mes, dia, segons, minuts, hores, nomMaquina, nomProces, PID, missatge)'''
-
+        sqlcmd = '''CREATE TABLE LOGS (mes, dia, segons, minuts, hores, nomMaquina, nomProces, PID, missatge)'''
         cursor.execute(sqlcmd)
     except sqlite3.Error as error:
+        pass
 
-        tracta_excepcio_sql(error, sqlcmd)
-
-
-    
-    for line in fileHandler.readlines():
-        values = validateLine(line)
-        if values :
+    for i in open(fileHandler.name, "rb"):
+        encoding = chardet.detect(i)
+        encoding = encoding['encoding']
+        i = i.decode(encoding, 'ignore')
+        values = validateLine(i)
+        print("line is: " + str(values))
+        if values:
             try:
+                #escape special characters
+                '''for j in range(len(values)):
+                    values[j] = urllib.parse.quote(values[j])'''
+
                 # Insert a row of data
-                cursor.execute("INSERT INTO LOGS VALUES (values[0],values[1],values[2],values[3],values[4],values[5],values[6])")
+                sqlcmd = '''INSERT INTO LOGS VALUES('''+ "\"" + str(values[0]) + "\", " + str(values[1]) + ", " + str(values[2]) + ", " + str(values[3]) + ", " + str(values[4]) + ", \"" + str(values[5]) + "\", \"" + str(values[6]) + "\", \"" + str(values[7]) + "\", \""+ str(values[8]) + "\"" + ")"
+                cursor.execute(sqlcmd)
+
                 # Save (commit) the changes
-                cursor.commit()
+                connection.commit()
             except sqlite3.Error as error:
-                tracta_excepcio_sql(error, sqlcmd)
+                tracta_excepcio_sql(error, str(sqlcmd))
 
 
 
-            print ("Validat Correctament")
-            print (values)
+            print("Validat Correctament")
         else:
-            print ("Validat Incorrectament")
+            print("Validat Incorrectament")
             pass
 
-    cursor.close()
 
 
 
@@ -123,6 +129,13 @@ def buscaData():
 
 def buscaMaquina():
     # QUERIES SQL a la BD >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
+    print(entrada.get())
+    sqlcmd = '''SELECT * FROM LOGS WHERE nomMaquina = ''' + "\"" + entrada.get() + "\""
+    cursor.execute(sqlcmd)
+    connection.commit()
+    lines = cursor.fetchall()
+    for line in lines:
+        print(line)
 
     pass
 
@@ -146,6 +159,8 @@ def buscaTots():
 
 
 def acabar():
+    cursor.close()
+
     tancaGUI()
     pass
 
@@ -158,6 +173,7 @@ def exportaFiltrats():
 
 def tancaGUI():
     guiRoot.quit()
+
 
 def validateLine(line):
 
@@ -197,14 +213,8 @@ def validateLine(line):
         nomProcesPID = nomProcesPID.split("[")
         nomDimoni = nomProcesPID[0]
         PID = int(nomProcesPID[1].split("]")[0])
-
-
-
-
         missatge = camps[5:]
         reescriuMissatge = " ".join(missatge)
-        print (missatge)
-        print (reescriuMissatge)
         if mes not in mesosPossibles:
             print("Mes incorrecte")
             raise
@@ -219,7 +229,7 @@ def validateLine(line):
             print("Minuts incorrectes")
             raise
         if segons < 0 | segons > 59:
-            print("Segons incorrectes")
+            print("Segons incorrectes", file=sys.err)
             raise
 
         formato1 = True
@@ -231,12 +241,12 @@ def validateLine(line):
         values.append(nomMaquina)
         values.append(nomDimoni)
         values.append(PID)
-        values.append (missatge)
+        values.append(reescriuMissatge)
 
 
     except:
-
-        print ("Formato incorrecto")
+        pass
+        # print ("Formato incorrecto")
 
     #Formato 2
     formato2 = False
@@ -254,8 +264,6 @@ def validateLine(line):
             nomProces= camps[4]
             missatge = camps[5:]
             reescriuMissatge = " ".join(missatge)
-            print(missatge)
-            print(reescriuMissatge)
             if mes not in mesosPossibles:
                 print("Mes incorrecte")
                 raise
@@ -282,15 +290,12 @@ def validateLine(line):
             values.append(nomMaquina)
             values.append(nomProces)
             values.append ("")
-            values.append(missatge)
+            values.append(reescriuMissatge)
 
         except:
-
-            print("Formato incorrecto")
-
+            pass
     if not (formato1 | formato2):
-        print("esto es lalinea: " + newline)
-        print(newline, file=sys.stderr)
+        print("linea mal es: " + newline)
         return values
     else:
         return values
@@ -354,16 +359,19 @@ frameStatus.pack(side=RIGHT, expand=False, padx=2)
 nova = messagebox.askyesno("Nova DB o vella", "Vols crear una DB nova ?")
 logFileHandler = filedialog.askopenfile("r")
 
+os.system("file filedialog.name")
+
+
 if nova:
-    connection, cursor = crea_connexio(logFileHandler.name+".db") #Crea una connexio
+    connection, cursor = crea_connexio(logFileHandler.name+".db")  #Crea una connexio
 
     pass
 else:
-    DBFileHandler = filedialog.askopenfile("r") #"Obrir fitxer de base de dades"
+    DBFileHandler = filedialog.askopenfile("r")  #"Obrir fitxer de base de dades"
     connection, cursor = crea_connexio(DBFileHandler.name)
 
     pass
-#BD READY
+# BD READY
 crea_taula(logFileHandler, connection, cursor)
 
 
