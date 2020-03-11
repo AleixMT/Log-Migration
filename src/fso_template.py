@@ -7,16 +7,12 @@ Data: 3/3/2020
 Versio: 1.0
 """
 # imports tipics/generics
-# import sys
-# import os   # os.path, os.stat, os.remove ...
-# from sys import stderr
-# from stat import filemode
+import os
 
 # imports pel GUI
 from tkinter import *   # GUI
-from tkinter import filedialog	# per a demanar fitxers
+from tkinter import filedialog  # per a demanar fitxers
 from tkinter import messagebox  # per a mostrar missatges a l’usuari
-# https://docs.python.org/3.9/library/tkinter.messagebox.html
 
 # imports específics d'aquesta practica
 import sqlite3
@@ -24,63 +20,56 @@ import chardet
 import urllib
 
 
-
-# imports auxiliars/secondaris
-# from time import strftime   # nom de la BD variable
-# import urllib.parse         # guardar events a la DB amb cars especials
-# import gzip                 # per si el log esta comprimit
-
-
-# BD SQLITE
-def tracta_excepcio_sql(error, sql):
+def tracta_excepcio_sql(error, comandasql):
     exception_type = type(error).__name__
-    print("\n", exception_type, file=sys.stderr)
+    print("\n" + exception_type, file=sys.stderr)
     print(error, file=sys.stderr)
-    print(sql, "\n", file=sys.stderr)
+    print(comandasql + "\n", file=sys.stderr)
 
 
 # Crea la connexio i un cursor
 # retorna: la connexio i el cursor
-def crea_connexio(nomBD):
+def crea_connexio(database_name):
     con = None
     cur = None  # Added to delete warning referenced before assignment
-    sqlcmd = None  # Added to delete warning referenced before assignment
     try:
-        sqlcmd = None  # Connectar proces de sql
-        con = sqlite3.connect(nomBD)
+        con = sqlite3.connect(database_name)
         cur = con.cursor()
     except sqlite3.Error as err:
-        tracta_excepcio_sql(err, sqlcmd)  # Connectar processos de sql
+        tracta_excepcio_sql(err, "Inicialització DB")  # Connectar processos de sql
     return con, cur
 
 
-def crea_taula(fileHandler, connection=None, cursor=None):
-    # poden tenir diverses codificacions(ascii, utf - 8, etc)
-    # poden contenir parts binàries
-    # poden estar comprimits amb gzip(ex: syslog.2.gz)
-
-
+def crea_taula(connection=None, cursor=None):
     # Create table
+    sqlcmd = ""
     try:
         sqlcmd = '''CREATE TABLE LOGS (mes, dia, segons, minuts, hores, nomMaquina, nomProces, PID, missatge)'''
         cursor.execute(sqlcmd)
+        connection.commit()
     except sqlite3.Error as error:
-        pass
+        tracta_excepcio_sql(error, sqlcmd)
 
+
+def plenaTaula(fileHandler):
     for i in open(fileHandler.name, "rb"):
+        # Permet llegir fitxers binaris i en diferentes codificacions
         encoding = chardet.detect(i)
-        encoding = encoding['encoding']
-        i = i.decode(encoding, 'ignore')
+        i = i.decode(encoding['encoding'], 'ignore')
         values = validateLine(i)
+
         print("line is: " + str(values))
         if values:
             try:
-                #escape special characters
+                # TODO Escape special characters
                 '''for j in range(len(values)):
                     values[j] = urllib.parse.quote(values[j])'''
 
                 # Insert a row of data
-                sqlcmd = '''INSERT INTO LOGS VALUES('''+ "\"" + str(values[0]) + "\", " + str(values[1]) + ", " + str(values[2]) + ", " + str(values[3]) + ", " + str(values[4]) + ", \"" + str(values[5]) + "\", \"" + str(values[6]) + "\", \"" + str(values[7]) + "\", \""+ str(values[8]) + "\"" + ")"
+                sqlcmd = '''INSERT INTO LOGS VALUES(''' + "\"" + str(values[0]) + "\", " + str(values[1]) + ", " + str(
+                    values[2]) + ", " + str(values[3]) + ", " + str(values[4]) + ", \"" + str(
+                    values[5]) + "\", \"" + str(values[6]) + "\", \"" + str(values[7]) + "\", \"" + str(
+                    values[8]) + "\"" + ")"
                 cursor.execute(sqlcmd)
 
                 # Save (commit) the changes
@@ -88,30 +77,10 @@ def crea_taula(fileHandler, connection=None, cursor=None):
             except sqlite3.Error as error:
                 tracta_excepcio_sql(error, str(sqlcmd))
 
-
-
             print("Validat Correctament")
         else:
             print("Validat Incorrectament")
             pass
-
-
-
-
-
-
-    # Definicio de la taula amb els camps dels logs
-
-
-    sql_crea_taula = """CREATE TABLE events (
-    # >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
-                       .....
-                        );"""
-
-
-    # IMPORTAR FITXER DE LOG a BD
-    # >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
-
 
 
 def buscaMes():
@@ -135,8 +104,7 @@ def buscaMaquina():
     connection.commit()
     lines = cursor.fetchall()
     for line in lines:
-        print(line)
-
+        listBoxEvents.insert(END, line)
     pass
 
 
@@ -197,7 +165,7 @@ def validateLine(line):
         if len(line) - 1 > 0:
             line = line[0:len(line) - 1]
 
-    #Formato 1
+    # Formato 1
     formato1 = False
     try:
         camps = newline.split(" ")
@@ -221,7 +189,6 @@ def validateLine(line):
         if dia < 1 | dia > 31:
             print("Dia incorrecte")
             raise
-
         if hores < 0 | hores > 23:
             print("Hora incorrecte")
             raise
@@ -229,7 +196,7 @@ def validateLine(line):
             print("Minuts incorrectes")
             raise
         if segons < 0 | segons > 59:
-            print("Segons incorrectes", file=sys.err)
+            print("Segons incorrectes", file=sys.stderr)  # TODO printear  el resto de errores por stderr
             raise
 
         formato1 = True
@@ -242,13 +209,11 @@ def validateLine(line):
         values.append(nomDimoni)
         values.append(PID)
         values.append(reescriuMissatge)
-
-
     except:
         pass
         # print ("Formato incorrecto")
 
-    #Formato 2
+    # Formato 2
     formato2 = False
     if not formato1:
         try:
@@ -295,20 +260,15 @@ def validateLine(line):
         except:
             pass
     if not (formato1 | formato2):
-        print("linea mal es: " + newline)
+        print("linea mal es: " + newline)  # TODO stderr
         return values
     else:
         return values
 
 
-
-
-
-
-
 # tkinter GUI
 guiRoot = Tk()
-guiRoot.title("Filtrar entrades de LOG a la BD")
+guiRoot.title("Log-Migration")
 guiRoot.minsize(600, 400)
 cerca = StringVar()  # variable usada en els QUERIES
 
@@ -355,33 +315,16 @@ etqStatus.pack(side=RIGHT, anchor=E)
 frameStatus.pack(side=RIGHT, expand=False, padx=2)
 
 # MAIN
-
-nova = messagebox.askyesno("Nova DB o vella", "Vols crear una DB nova ?")
+messagebox.showinfo("Carregar fitxer de log", "Selecciona el fitxer de log a carregar")
 logFileHandler = filedialog.askopenfile("r")
-
-os.system("file filedialog.name")
-
-
-if nova:
-    connection, cursor = crea_connexio(logFileHandler.name+".db")  #Crea una connexio
-
-    pass
+opcio = messagebox.askyesno("Nova DB", "Vols crear una DB nova?")
+if opcio:
+    connection, cursor = crea_connexio(logFileHandler.name+".db")  #Crea una BD nova  # TODO es crearà un nou fitxer amb el nom depenent del dia (_ddmmaa). Per exemple: logs2db_311219.db.
+    crea_taula(connection, cursor)  # La DB es nova, crea la unica taula que tenim
 else:
-    DBFileHandler = filedialog.askopenfile("r")  #"Obrir fitxer de base de dades"
+    DBFileHandler = filedialog.askopenfile("r")  # Obrir fitxer de base de dades
     connection, cursor = crea_connexio(DBFileHandler.name)
-
-    pass
-# BD READY
-crea_taula(logFileHandler, connection, cursor)
-
-
-
-
-
-
-
-
-# >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
+plenaTaula(logFileHandler)  # Carrega els nous records
 
 # al final del fitxer: bucle d'espera d'events asincrons de l'usuari
 guiRoot.mainloop()
