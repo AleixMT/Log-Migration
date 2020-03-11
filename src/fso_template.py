@@ -21,6 +21,7 @@ from tkinter import messagebox  # per a mostrar missatges a l’usuari
 # imports específics d'aquesta practica
 import sqlite3
 
+
 # imports auxiliars/secondaris
 # from time import strftime   # nom de la BD variable
 # import urllib.parse         # guardar events a la DB amb cars especials
@@ -37,35 +38,57 @@ def tracta_excepcio_sql(error, sql):
 
 # Crea la connexio i un cursor
 # retorna: la connexio i el cursor
-def crea_connexio(database):
+def crea_connexio(nomBD):
     con = None
     cur = None  # Added to delete warning referenced before assignment
     sqlcmd = None  # Added to delete warning referenced before assignment
     try:
         sqlcmd = None  # Connectar proces de sql
-        con = sqlite3.connect(database)
+        con = sqlite3.connect(nomBD)
         cur = con.cursor()
     except sqlite3.Error as err:
         tracta_excepcio_sql(err, sqlcmd)  # Connectar processos de sql
     return con, cur
 
 
-def crea_taula(fileHandler, cur=None, taula_sql=None):
+def crea_taula(fileHandler, connection=None, cursor=None):
     # poden tenir diverses codificacions(ascii, utf - 8, etc)
     # poden contenir parts binàries
     # poden estar comprimits amb gzip(ex: syslog.2.gz)
 
-# Crear tabla TODO
+
+    # Create table
+    try:
+        sqlcmd = '''CREATE TABLE LOGS
+                             (mes, dia, segons, minuts, hores, nomMaquina, nomProces, PID, missatge)'''
+
+        cursor.execute(sqlcmd)
+    except sqlite3.Error as error:
+
+        tracta_excepcio_sql(error, sqlcmd)
+
+
     
     for line in fileHandler.readlines():
         values = validateLine(line)
         if values :
+            try:
+                # Insert a row of data
+                cursor.execute("INSERT INTO LOGS VALUES (values[0],values[1],values[2],values[3],values[4],values[5],values[6])")
+                # Save (commit) the changes
+                cursor.commit()
+            except sqlite3.Error as error:
+                tracta_excepcio_sql(error, sqlcmd)
+
+
+
             print ("Validat Correctament")
             print (values)
         else:
             print ("Validat Incorrectament")
             pass
 
+    cursor.close()
 
 
 
@@ -79,13 +102,10 @@ def crea_taula(fileHandler, cur=None, taula_sql=None):
                        .....
                         );"""
 
+
     # IMPORTAR FITXER DE LOG a BD
     # >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
 
-    try:
-        cur.execute(taula_sql)
-    except sqlite3.Error as error:
-        tracta_excepcio_sql(error, taula_sql)
 
 
 def buscaMes():
@@ -261,6 +281,7 @@ def validateLine(line):
             values.append(segons)
             values.append(nomMaquina)
             values.append(nomProces)
+            values.append ("")
             values.append(missatge)
 
         except:
@@ -331,13 +352,22 @@ frameStatus.pack(side=RIGHT, expand=False, padx=2)
 # MAIN
 
 nova = messagebox.askyesno("Nova DB o vella", "Vols crear una DB nova ?")
+logFileHandler = filedialog.askopenfile("r")
 
 if nova:
-    fileHandler = filedialog.askopenfile("r")
-    crea_taula(fileHandler)
+    connection, cursor = crea_connexio(logFileHandler.name+".db") #Crea una connexio
+
     pass
 else:
+    DBFileHandler = filedialog.askopenfile("r") #"Obrir fitxer de base de dades"
+    connection, cursor = crea_connexio(DBFileHandler.name)
+
     pass
+#BD READY
+crea_taula(logFileHandler, connection, cursor)
+
+
+
 
 
 
