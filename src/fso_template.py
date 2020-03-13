@@ -17,7 +17,7 @@ from tkinter import messagebox  # per a mostrar missatges a l’usuari
 # imports específics d'aquesta practica
 import sqlite3
 import chardet
-import urllib.parse
+from urllib.parse import quote, unquote
 
 
 def tracta_excepcio_sql(error, comandasql):
@@ -58,12 +58,12 @@ def plenaTaula(fileHandler):
         i = i.decode(encoding['encoding'], 'ignore')
         values = validateLine(i)
 
-        print("line is: " + str(values))
         if values:
             try:
-                # TODO Escape special characters
-                '''for j in range(len(values)):
-                    values[j] = urllib.parse.quote(values[j])'''
+
+                # Escape special characters
+                for j in range(len(values)):
+                    values[j] = quote(str(values[j]))
 
                 # Insert a row of data
                 sqlcmd = '''INSERT INTO LOGS VALUES(''' + "\"" + str(values[0]) + "\", " + str(values[1]) + ", " + str(
@@ -77,22 +77,24 @@ def plenaTaula(fileHandler):
             except sqlite3.Error as error:
                 tracta_excepcio_sql(error, str(sqlcmd))
 
-            print("Validat Correctament")
         else:
-            print("Validat Incorrectament")
             pass
 
 
 def buscaMes():
-    # QUERIES SQL a la BD >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
-    print(entrada.get())
-    sqlcmd = '''SELECT * FROM LOGS WHERE mes = ''' + "\"" + entrada.get() + "\""
+    sqlcmd = '''SELECT * FROM LOGS WHERE mes = ''' + "\"" + entrada.get() + "\""  # TODO Òbviament, abans de fer la cerca s’ha de comprovar que el format sigui correcte.
     cursor.execute(sqlcmd)
     connection.commit()
     lines = cursor.fetchall()
     listBoxEvents.delete(0, END)
     for line in lines:
-        listBoxEvents.insert(END, line)
+        fields = []
+        for field in line:
+            field = unquote(str(field))
+            fields.append(field)
+        fields = " ".join(fields)
+
+        listBoxEvents.insert(END, fields)
 
     n = len(lines)
     status.set("Elements filtrats: " + str(n))
@@ -101,10 +103,7 @@ def buscaMes():
 
 
 def buscaData():
-    # QUERIES SQL a la BD >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
-
-    print(entrada.get())
-    data = entrada.get().split(" ")
+    data = entrada.get().split(" ")  # TODO Òbviament, abans de fer la cerca s’ha de comprovar que el format sigui correcte.
     mes = str(data[0])
     data_dia = data[1]
     sqlcmd = '''SELECT * FROM LOGS WHERE mes = ''' + "\"" + mes + "\" AND dia = " + "\"" + data_dia + "\""
@@ -113,66 +112,89 @@ def buscaData():
     lines = cursor.fetchall()
     listBoxEvents.delete(0, END)
     for line in lines:
-        listBoxEvents.insert(END, line)
+        fields = []
+        for field in line:
+            field = unquote(str(field))
+            fields.append(field)
+        fields = " ".join(fields)
+
+        listBoxEvents.insert(END, fields)
 
     n = len(lines)
     status.set("Elements filtrats: " + str(n))
 
 
 def buscaMaquina():
-    # QUERIES SQL a la BD >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
-    print(entrada.get())
-    sqlcmd = '''SELECT * FROM LOGS WHERE nomMaquina = ''' + "\"" + entrada.get() + "\""
-    cursor.execute(sqlcmd)
-    connection.commit()
-    lines = cursor.fetchall()
-    for line in lines:
-        listBoxEvents.insert(END, line)
-    pass
-
-
-def buscaProces():
-    # QUERIES SQL a la BD >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
-    print(entrada.get())
-    sqlcmd = '''SELECT * FROM LOGS WHERE nomProces = ''' + "\"" + entrada.get() + "\""
+    sqlcmd = '''SELECT * FROM LOGS WHERE nomMaquina = ''' + "\"" + entrada.get() + "\""  # TODO Òbviament, abans de fer la cerca s’ha de comprovar que el format sigui correcte.
     cursor.execute(sqlcmd)
     connection.commit()
     lines = cursor.fetchall()
     listBoxEvents.delete(0, END)
     for line in lines:
-        listBoxEvents.insert(END, line)
+        fields = []
+        for field in line:
+            field = unquote(str(field))
+            fields.append(field)
+        fields = " ".join(fields)
+
+        listBoxEvents.insert(END, fields)
 
     n = len(lines)
     status.set("Elements filtrats: " + str(n))
 
-    pass
 
-
-def buscaPID():
-    # QUERIES SQL a la BD >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
-    print(entrada.get())
-    sqlcmd = '''SELECT * FROM LOGS WHERE PID = ''' + "\"" + entrada.get() + "\""
+def buscaProces():
+    sqlcmd = '''SELECT * FROM LOGS WHERE nomProces = ''' + "\"" + entrada.get() + "\""  # TODO Òbviament, abans de fer la cerca s’ha de comprovar que el format sigui correcte.
     cursor.execute(sqlcmd)
     connection.commit()
     lines = cursor.fetchall()
     listBoxEvents.delete(0, END)
     for line in lines:
-        listBoxEvents.insert(END, line)
+        fields = []
+        for field in line:
+            field = unquote(str(field))
+            fields.append(field)
+        fields = " ".join(fields)
+
+        listBoxEvents.insert(END, fields)
+
+    n = len(lines)
+    status.set("Elements filtrats: " + str(n))
+
+
+def buscaPID():
+    sqlcmd = '''SELECT * FROM LOGS WHERE PID = ''' + "\"" + entrada.get() + "\""  # TODO Òbviament, abans de fer la cerca s’ha de comprovar que el format sigui correcte.
+    cursor.execute(sqlcmd)
+    connection.commit()
+    lines = cursor.fetchall()
+    listBoxEvents.delete(0, END)
+    for line in lines:
+        fields = []
+        for field in line:
+            field = unquote(str(field))
+            fields.append(field)
+        fields = " ".join(fields)
+
+        listBoxEvents.insert(END, fields)
 
     n = len(lines)
     status.set("Elements filtrats: " + str(n))
 
 
 def buscaTots():
-    # QUERIES SQL a la BD >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
-
     sqlcmd = " SELECT * FROM LOGS "
     cursor.execute(sqlcmd)
     connection.commit()
     lines = cursor.fetchall()
     listBoxEvents.delete(0, END)
     for line in lines:
-        listBoxEvents.insert(END, line)
+        fields = []
+        for field in line:
+            field = unquote(str(field))
+            fields.append(field)
+        fields = " ".join(fields)
+
+        listBoxEvents.insert(END, fields)
 
     n = len(lines)
     status.set("Elements filtrats: " + str(n))
@@ -180,14 +202,14 @@ def buscaTots():
 
 def acabar():
     cursor.close()
-
     tancaGUI()
 
 
 # Mostra els events filtrats per la sortida.
-# Si son tots hauria de coincidir amb la entrada.
+# Si son tots hauria de coincidir amb l'entrada.
 def exportaFiltrats():
-    pass
+    for line in listBoxEvents.get(0, END):
+        print(str(line).strip())
 
 
 def tancaGUI():
@@ -370,12 +392,16 @@ messagebox.showinfo("Carregar fitxer de log", "Selecciona el fitxer de log a car
 logFileHandler = filedialog.askopenfile("r")
 opcio = messagebox.askyesno("Nova DB", "Vols crear una DB nova?")
 if opcio:
-    connection, cursor = crea_connexio(logFileHandler.name+".db")  #Crea una BD nova  # TODO es crearà un nou fitxer amb el nom depenent del dia (_ddmmaa). Per exemple: logs2db_311219.db.
+    os.remove(logFileHandler.name+".db")  # Ens assegurem que si escollim nova BD d'un fitxer existent comencem de nou
+    connection, cursor = crea_connexio(logFileHandler.name+".db")  # Crea una BD nova  # TODO es crearà un nou fitxer amb el nom depenent del dia (_ddmmaa). Per exemple: logs2db_311219.db.
     crea_taula(connection, cursor)  # La DB es nova, crea la unica taula que tenim
 else:
     DBFileHandler = filedialog.askopenfile("r")  # Obrir fitxer de base de dades
     connection, cursor = crea_connexio(DBFileHandler.name)
 plenaTaula(logFileHandler)  # Carrega els nous records
+buscaTots()
+messagebox.showinfo("", "Fitxer de Log i BD carregats correctament")
+
 
 # al final del fitxer: bucle d'espera d'events asincrons de l'usuari
 guiRoot.mainloop()
