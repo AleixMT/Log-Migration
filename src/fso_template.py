@@ -20,7 +20,6 @@ import chardet
 import urllib.parse
 
 
-
 def tracta_excepcio_sql(error, comandasql):
     exception_type = type(error).__name__
     print("\n" + exception_type, file=sys.stderr)
@@ -106,9 +105,9 @@ def buscaData():
 
     print(entrada.get())
     data = entrada.get().split(" ")
-    data_mes = data[0]
+    mes = str(data[0])
     data_dia = data[1]
-    sqlcmd = '''SELECT * FROM LOGS WHERE mes = ''' + "\"" + data_mes + "\""" AND dia = ''' + "\"" + data_dia + "\" "
+    sqlcmd = '''SELECT * FROM LOGS WHERE mes = ''' + "\"" + mes + "\" AND dia = " + "\"" + data_dia + "\""
     cursor.execute(sqlcmd)
     connection.commit()
     lines = cursor.fetchall()
@@ -118,8 +117,6 @@ def buscaData():
 
     n = len(lines)
     status.set("Elements filtrats: " + str(n))
-
-    pass
 
 
 def buscaMaquina():
@@ -165,8 +162,6 @@ def buscaPID():
     n = len(lines)
     status.set("Elements filtrats: " + str(n))
 
-    pass
-
 
 def buscaTots():
     # QUERIES SQL a la BD >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
@@ -182,14 +177,11 @@ def buscaTots():
     n = len(lines)
     status.set("Elements filtrats: " + str(n))
 
-    pass
-
 
 def acabar():
     cursor.close()
 
     tancaGUI()
-    pass
 
 
 # Mostra els events filtrats per la sortida.
