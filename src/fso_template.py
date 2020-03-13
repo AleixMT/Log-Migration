@@ -18,6 +18,14 @@ from tkinter import messagebox  # per a mostrar missatges a l’usuari
 import sqlite3
 import chardet
 import urllib.parse
+import os.path
+import time
+from subprocess import Popen, PIPE
+
+
+
+
+
 
 
 def tracta_excepcio_sql(error, comandasql):
@@ -369,8 +377,14 @@ frameStatus.pack(side=RIGHT, expand=False, padx=2)
 messagebox.showinfo("Carregar fitxer de log", "Selecciona el fitxer de log a carregar")
 logFileHandler = filedialog.askopenfile("r")
 opcio = messagebox.askyesno("Nova DB", "Vols crear una DB nova?")
+tiposFichero = ["data", "gz", "UTF-8", "NON-ISO", "ASCII"]
+
 if opcio:
-    connection, cursor = crea_connexio(logFileHandler.name+".db")  #Crea una BD nova  # TODO es crearà un nou fitxer amb el nom depenent del dia (_ddmmaa). Per exemple: logs2db_311219.db.
+    proceso = Popen("file " + logFileHandler.name, shell=True, stdout=PIPE, stderr=PIPE)
+    out, err = proceso.communicate()
+    print (out)
+    creation_time = os.path.getctime(logFileHandler.name)
+    connection, cursor = crea_connexio(logFileHandler.name+"_" + str(creation_time).split(".")[1] + ".db") #Crea una BD nova  # TODO es crearà un nou fitxer amb el nom depenent del dia (_ddmmaa). Per exemple: logs2db_311219.db.
     crea_taula(connection, cursor)  # La DB es nova, crea la unica taula que tenim
 else:
     DBFileHandler = filedialog.askopenfile("r")  # Obrir fitxer de base de dades
