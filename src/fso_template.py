@@ -17,7 +17,8 @@ from tkinter import messagebox  # per a mostrar missatges a l’usuari
 # imports específics d'aquesta practica
 import sqlite3
 import chardet
-import urllib
+import urllib.parse
+
 
 
 def tracta_excepcio_sql(error, comandasql):
@@ -85,13 +86,38 @@ def plenaTaula(fileHandler):
 
 def buscaMes():
     # QUERIES SQL a la BD >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
-    n = 66
+    print(entrada.get())
+    sqlcmd = '''SELECT * FROM LOGS WHERE mes = ''' + "\"" + entrada.get() + "\""
+    cursor.execute(sqlcmd)
+    connection.commit()
+    lines = cursor.fetchall()
+    listBoxEvents.delete(0, END)
+    for line in lines:
+        listBoxEvents.insert(END, line)
+
+    n = len(lines)
     status.set("Elements filtrats: " + str(n))
+
     pass
 
 
 def buscaData():
     # QUERIES SQL a la BD >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
+
+    print(entrada.get())
+    data = entrada.get().split(" ")
+    data_mes = data[0]
+    data_dia = data[1]
+    sqlcmd = '''SELECT * FROM LOGS WHERE mes = ''' + "\"" + data_mes + "\""" AND dia = ''' + "\"" + data_dia + "\" "
+    cursor.execute(sqlcmd)
+    connection.commit()
+    lines = cursor.fetchall()
+    listBoxEvents.delete(0, END)
+    for line in lines:
+        listBoxEvents.insert(END, line)
+
+    n = len(lines)
+    status.set("Elements filtrats: " + str(n))
 
     pass
 
@@ -110,18 +136,51 @@ def buscaMaquina():
 
 def buscaProces():
     # QUERIES SQL a la BD >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
+    print(entrada.get())
+    sqlcmd = '''SELECT * FROM LOGS WHERE nomProces = ''' + "\"" + entrada.get() + "\""
+    cursor.execute(sqlcmd)
+    connection.commit()
+    lines = cursor.fetchall()
+    listBoxEvents.delete(0, END)
+    for line in lines:
+        listBoxEvents.insert(END, line)
+
+    n = len(lines)
+    status.set("Elements filtrats: " + str(n))
 
     pass
 
 
 def buscaPID():
     # QUERIES SQL a la BD >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
+    print(entrada.get())
+    sqlcmd = '''SELECT * FROM LOGS WHERE PID = ''' + "\"" + entrada.get() + "\""
+    cursor.execute(sqlcmd)
+    connection.commit()
+    lines = cursor.fetchall()
+    listBoxEvents.delete(0, END)
+    for line in lines:
+        listBoxEvents.insert(END, line)
+
+    n = len(lines)
+    status.set("Elements filtrats: " + str(n))
 
     pass
 
 
 def buscaTots():
     # QUERIES SQL a la BD >>>>>>>>>> CODI ALUMNES <<<<<<<<<<
+
+    sqlcmd = " SELECT * FROM LOGS "
+    cursor.execute(sqlcmd)
+    connection.commit()
+    lines = cursor.fetchall()
+    listBoxEvents.delete(0, END)
+    for line in lines:
+        listBoxEvents.insert(END, line)
+
+    n = len(lines)
+    status.set("Elements filtrats: " + str(n))
 
     pass
 
@@ -184,19 +243,19 @@ def validateLine(line):
         missatge = camps[5:]
         reescriuMissatge = " ".join(missatge)
         if mes not in mesosPossibles:
-            print("Mes incorrecte")
+            print("Mes incorrecte", file=sys.stderr)
             raise
         if dia < 1 | dia > 31:
-            print("Dia incorrecte")
+            print("Dia incorrecte", file=sys.stderr)
             raise
         if hores < 0 | hores > 23:
-            print("Hora incorrecte")
+            print("Hora incorrecte", file=sys.stderr)
             raise
         if minuts < 0 | minuts > 59:
-            print("Minuts incorrectes")
+            print("Minuts incorrectes", file=sys.stderr)
             raise
         if segons < 0 | segons > 59:
-            print("Segons incorrectes", file=sys.stderr)  # TODO printear  el resto de errores por stderr
+            print("Segons incorrectes", file=sys.stderr)
             raise
 
         formato1 = True
@@ -230,20 +289,20 @@ def validateLine(line):
             missatge = camps[5:]
             reescriuMissatge = " ".join(missatge)
             if mes not in mesosPossibles:
-                print("Mes incorrecte")
+                print("Mes incorrecte", file=sys.stderr)
                 raise
             if dia < 1 | dia > 31:
-                print("Dia incorrecte")
+                print("Dia incorrecte", file=sys.stderr)
                 raise
 
             if hores < 0 | hores > 23:
-                print("Hora incorrecte")
+                print("Hora incorrecte", file=sys.stderr)
                 raise
             if minuts < 0 | minuts > 59:
-                print("Minuts incorrectes")
+                print("Minuts incorrectes", file=sys.stderr)
                 raise
             if segons < 0 | segons > 59:
-                print("Segons incorrectes")
+                print("Segons incorrectes", file=sys.stderr)
                 raise
 
             formato2 = True
@@ -260,7 +319,7 @@ def validateLine(line):
         except:
             pass
     if not (formato1 | formato2):
-        print("linea mal es: " + newline)  # TODO stderr
+        print("linea mal es: " + newline,file=sys.stderr)
         return values
     else:
         return values
