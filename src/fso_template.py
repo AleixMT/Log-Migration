@@ -20,6 +20,8 @@ import chardet
 from urllib.parse import quote, unquote
 import os.path
 from subprocess import Popen, PIPE
+import gzip
+import io
 
 
 def tracta_excepcio_sql(error, comandasql):
@@ -53,12 +55,32 @@ def crea_taula(connection=None, cursor=None):
         tracta_excepcio_sql(error, sqlcmd)
 
 
-def plenaTaula(fileHandler):
-    for i in open(fileHandler.name, "rb"):
-        # Permet llegir fitxers binaris i en diferentes codificacions
-        encoding = chardet.detect(i)
-        i = i.decode(encoding['encoding'], 'ignore')
-        values = validateLine(i)
+def plenaTaula(fileHandler, compressed=False):
+    if compressed:
+        with gzip.open(logFileHandler.name, 'rb') as log_input:
+            with io.TextIOWrapper(log_input, encoding='utf-8') as dec:
+                content = dec.readlines()
+    else:
+        content = open(fileHandler.name, "rb")
+
+    for i in content:
+        if compressed:
+            values = validateLine(i)
+
+            linia = []
+            for value in values:
+                linia.append(str(value))
+            print("line is: " + " ".join(linia))
+        else:
+            # Permet llegir fitxers binaris i en diferentes codificacions
+            encoding = chardet.detect(i)
+            i = i.decode(encoding['encoding'], 'ignore')
+            values = validateLine(i)
+
+            linia = []
+            for value in values:
+                linia.append(str(value))
+            print("line is: " + " ".join(linia))
 
         if values:
             try:
@@ -84,6 +106,18 @@ def plenaTaula(fileHandler):
 
 
 def buscaMes():
+    mesosPossibles = ["Gen", "Jan", "Feb", "Ene", "Mar", "May", "Mai", "Jun", "Jul", "Aug", "Ago", "Set", "Sep",
+                      "Oct",
+                      "Nov", "Des", "Dic", "Abr", "Apr"]
+    try:
+        entry = str(entrada.get())
+        if len(entry) != 3:
+            raise
+        if entry not in mesosPossibles:
+            raise
+    except:
+        # TODO mostrar missatge error
+        return
     sqlcmd = '''SELECT * FROM LOGS WHERE mes = ''' + "\"" + entrada.get() + "\""  # TODO Òbviament, abans de fer la cerca s’ha de comprovar que el format sigui correcte.
     cursor.execute(sqlcmd)
     connection.commit()
@@ -329,7 +363,7 @@ def validateLine(line):
             values.append(segons)
             values.append(nomMaquina)
             values.append(nomProces)
-            values.append ("")
+            values.append("")
             values.append(reescriuMissatge)
 
         except:
@@ -394,22 +428,31 @@ messagebox.showinfo("Carregar fitxer de log", "Selecciona el fitxer de log a car
 logFileHandler = filedialog.askopenfile("r")
 opcio = messagebox.askyesno("Nova DB", "Vols crear una DB nova?")
 tiposFichero = ["data", "gz", "UTF-8", "NON-ISO", "ASCII"]
-
+compressed = False
 if opcio:
+    # Comprovem tipus de fitxer
     proceso = Popen("file " + logFileHandler.name, shell=True, stdout=PIPE, stderr=PIPE)
-    out, err = proceso.communicate()
-    # print (out)
+    filetype = str(proceso.communicate()[0].decode("utf-8").split(" ")[1])
+    if filetype.__eq__("gzip"):
+        compressed = True
+    else:
+        compressed = False
+
     creation_time = os.path.getctime(logFileHandler.name)
-    connection, cursor = crea_connexio(logFileHandler.name+"_" + str(creation_time).split(".")[1] + ".db") #Crea una BD nova  # TODO es crearà un nou fitxer amb el nom depenent del dia (_ddmmaa). Per exemple: logs2db_311219.db.
-    os.remove(logFileHandler.name + ".db")  # Ens assegurem que si escollim nova BD d'un fitxer existent comencem de nou
+    try:  # Remove silently
+        os.remove(
+            logFileHandler.name+"_" + str(creation_time).split(".")[1] + ".db")  # Ens assegurem que si escollim nova BD d'un fitxer existent comencem de nou
+    except OSError:
+        pass
+    connection, cursor = crea_connexio(logFileHandler.name+"_" + str(creation_time).split(".")[1] + ".db")  # Crea una BD nova  # TODO es crearà un nou fitxer amb el nom depenent del dia (_ddmmaa). Per exemple: logs2db_311219.db.
+
     crea_taula(connection, cursor)  # La DB es nova, crea la unica taula que tenim
 else:
     DBFileHandler = filedialog.askopenfile("r")  # Obrir fitxer de base de dades
     connection, cursor = crea_connexio(DBFileHandler.name)
-plenaTaula(logFileHandler)  # Carrega els nous records
-buscaTots()
+plenaTaula(logFileHandler, compressed)  # Carrega els nous records
 messagebox.showinfo("", "Fitxer de Log i BD carregats correctament")
-
+buscaTots()  # Mostra per defecte tots els records
 
 # al final del fitxer: bucle d'espera d'events asincrons de l'usuari
 guiRoot.mainloop()
