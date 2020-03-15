@@ -90,8 +90,8 @@ def plenaTaula(fileHandler, compressed=False):
                     values[j] = quote(str(values[j]))
 
                 # Insert a row of data
-                sqlcmd = '''INSERT INTO LOGS VALUES(''' + "\"" + str(values[0]) + "\", " + str(values[1]) + ", " + str(
-                    values[2]) + ", " + str(values[3]) + ", " + str(values[4]) + ", \"" + str(
+                sqlcmd = '''INSERT INTO LOGS VALUES(''' + "\"" + str(values[0]) + "\", \"" + str(values[1]) + "\", \"" + str(
+                    values[2]) + "\", \"" + str(values[3]) + "\", \"" + str(values[4]) + "\", \"" + str(
                     values[5]) + "\", \"" + str(values[6]) + "\", \"" + str(values[7]) + "\", \"" + str(
                     values[8]) + "\"" + ")"
                 cursor.execute(sqlcmd)
@@ -142,7 +142,7 @@ def buscaData():
     data = entrada.get().split(" ")
     mes = str(data[0])
     data_dia = int(data[1])
-    sqlcmd = '''SELECT * FROM LOGS WHERE mes = ''' + "\"" + mes + "\" AND dia = " + "\"" + int(data_dia) + "\""
+    sqlcmd = "SELECT * FROM LOGS WHERE mes=" + "\"" + str(mes) + "\" AND dia=" + "\"" + str(data_dia) + "\""
     cursor.execute(sqlcmd)
     connection.commit()
     lines = cursor.fetchall()
