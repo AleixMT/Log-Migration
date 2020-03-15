@@ -116,9 +116,9 @@ def buscaMes():
         if entry not in mesosPossibles:
             raise
     except:
-        # TODO mostrar missatge error
+        print ("El format introduït del mes és incorrecte")
         return
-    sqlcmd = '''SELECT * FROM LOGS WHERE mes = ''' + "\"" + entrada.get() + "\""  # TODO Òbviament, abans de fer la cerca s’ha de comprovar que el format sigui correcte.
+    sqlcmd = '''SELECT * FROM LOGS WHERE mes = ''' + "\"" + entrada.get() + "\""
     cursor.execute(sqlcmd)
     connection.commit()
     lines = cursor.fetchall()
@@ -139,10 +139,10 @@ def buscaMes():
 
 
 def buscaData():
-    data = entrada.get().split(" ")  # TODO Òbviament, abans de fer la cerca s’ha de comprovar que el format sigui correcte.
+    data = entrada.get().split(" ")
     mes = str(data[0])
-    data_dia = data[1]
-    sqlcmd = '''SELECT * FROM LOGS WHERE mes = ''' + "\"" + mes + "\" AND dia = " + "\"" + data_dia + "\""
+    data_dia = int(data[1])
+    sqlcmd = '''SELECT * FROM LOGS WHERE mes = ''' + "\"" + mes + "\" AND dia = " + "\"" + int(data_dia) + "\""
     cursor.execute(sqlcmd)
     connection.commit()
     lines = cursor.fetchall()
@@ -161,7 +161,7 @@ def buscaData():
 
 
 def buscaMaquina():
-    sqlcmd = '''SELECT * FROM LOGS WHERE nomMaquina = ''' + "\"" + entrada.get() + "\""  # TODO Òbviament, abans de fer la cerca s’ha de comprovar que el format sigui correcte.
+    sqlcmd = '''SELECT * FROM LOGS WHERE nomMaquina = ''' + "\"" + entrada.get() + "\""
     cursor.execute(sqlcmd)
     connection.commit()
     lines = cursor.fetchall()
@@ -180,7 +180,7 @@ def buscaMaquina():
 
 
 def buscaProces():
-    sqlcmd = '''SELECT * FROM LOGS WHERE nomProces = ''' + "\"" + entrada.get() + "\""  # TODO Òbviament, abans de fer la cerca s’ha de comprovar que el format sigui correcte.
+    sqlcmd = '''SELECT * FROM LOGS WHERE nomProces = ''' + "\"" + entrada.get() + "\""
     cursor.execute(sqlcmd)
     connection.commit()
     lines = cursor.fetchall()
@@ -199,7 +199,7 @@ def buscaProces():
 
 
 def buscaPID():
-    sqlcmd = '''SELECT * FROM LOGS WHERE PID = ''' + "\"" + entrada.get() + "\""  # TODO Òbviament, abans de fer la cerca s’ha de comprovar que el format sigui correcte.
+    sqlcmd = '''SELECT * FROM LOGS WHERE PID = ''' + "\"" + entrada.get() + "\""
     cursor.execute(sqlcmd)
     connection.commit()
     lines = cursor.fetchall()
