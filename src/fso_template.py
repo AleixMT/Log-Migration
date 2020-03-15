@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Practica 1 de FSO-2019/20
-Autors: Pedro Espadas
+Autors: Pedro Espada Oviedo - Albert Canalda Gilabert
 Data: 3/3/2020
 Versio: 1.0
 """
@@ -139,9 +139,21 @@ def buscaMes():
 
 
 def buscaData():
-    data = entrada.get().split(" ")
-    mes = str(data[0])
-    data_dia = int(data[1])
+    mesosPossibles = ["Gen", "Jan", "Feb", "Ene", "Mar", "May", "Mai", "Jun", "Jul", "Aug", "Ago", "Set", "Sep",
+                      "Oct",
+                      "Nov", "Des", "Dic", "Abr", "Apr"]
+    #Al introduir la data comprobaré que el format del mes sigui correcte ja que podria ser conflictiu
+    try:
+        data = entrada.get().split(" ")
+        mes = str(data[0])
+        data_dia = int(data[1])
+        if len(mes) != 3:
+            raise
+        if mes not in mesosPossibles:
+            raise
+    except:
+        print ("El format introduït de mes és incorrecte")
+        return
     sqlcmd = "SELECT * FROM LOGS WHERE mes=" + "\"" + str(mes) + "\" AND dia=" + "\"" + str(data_dia) + "\""
     cursor.execute(sqlcmd)
     connection.commit()
@@ -320,7 +332,7 @@ def validateLine(line):
         values.append(reescriuMissatge)
     except:
         pass
-        # print ("Formato incorrecto")
+
 
     # Formato 2
     formato2 = False
@@ -444,7 +456,7 @@ if opcio:
             logFileHandler.name+"_" + str(creation_time).split(".")[1] + ".db")  # Ens assegurem que si escollim nova BD d'un fitxer existent comencem de nou
     except OSError:
         pass
-    connection, cursor = crea_connexio(logFileHandler.name+"_" + str(creation_time).split(".")[1] + ".db")  # Crea una BD nova  # TODO es crearà un nou fitxer amb el nom depenent del dia (_ddmmaa). Per exemple: logs2db_311219.db.
+    connection, cursor = crea_connexio(logFileHandler.name+"_" + str(creation_time).split(".")[1] + ".db")  # Crea una BD nova
 
     crea_taula(connection, cursor)  # La DB es nova, crea la unica taula que tenim
 else:
